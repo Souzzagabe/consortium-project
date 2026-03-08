@@ -14,6 +14,7 @@ import {
   Zap,
 } from "lucide-react";
 import SimulatorCard from "./SimulatorCard";
+import TestimonialsCarousel from "./TestimonialsCarousel";
 
 // ============================================
 // HERO SECTION (Server-rendered, no JS)
@@ -348,67 +349,6 @@ function StatsSection() {
 }
 
 // ============================================
-// TESTIMONIALS SECTION
-// ============================================
-
-const testimonials = [
-  { name: "Maria Silva", role: "Empresária", content: "Consegui minha casa própria em apenas 18 meses. O consórcio foi a melhor decisão financeira que já tomei.", rating: 5 },
-  { name: "João Santos", role: "Engenheiro", content: "A estratégia de lance me ajudou a ser contemplado rapidamente. Equipe super atenciosa e profissional.", rating: 5 },
-  { name: "Ana Oliveira", role: "Médica", content: "Renovei toda minha frota de veículos sem pagar juros absurdos. Recomendo para todos!", rating: 5 },
-];
-
-function TestimonialsSection() {
-  return (
-    <section className="py-16 lg:py-32 bg-dark relative overflow-hidden cv-auto" aria-labelledby="testimonials-heading">
-      <div className="gradient-orb absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand/5 rounded-full blur-[100px]" aria-hidden="true" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="css-reveal text-center mb-12 lg:mb-16">
-          <span className="inline-block text-sm font-semibold text-brand uppercase tracking-wider mb-4">
-            Depoimentos
-          </span>
-          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            O que nossos clientes{" "}
-            <span className="gradient-text">dizem</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={testimonial.name}
-              className="css-reveal glass-card rounded-2xl p-6 sm:p-8 h-full flex flex-col hover-lift-sm"
-              style={{ transitionDelay: `${index * 0.15}s` }}
-            >
-              <div className="flex gap-1 mb-4" role="img" aria-label={`Avaliação: ${testimonial.rating} de 5 estrelas`}>
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-brand" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-navy-200 leading-relaxed mb-6 flex-grow">
-                &ldquo;{testimonial.content}&rdquo;
-              </p>
-              <div className="flex items-center gap-4 mt-auto">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full gradient-brand flex items-center justify-center shrink-0">
-                  <span className="text-white font-bold text-sm sm:text-base">
-                    {testimonial.name.charAt(0)}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-semibold text-white">{testimonial.name}</p>
-                  <p className="text-sm text-navy-400">{testimonial.role}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================
 // FINAL CTA SECTION
 // ============================================
 
@@ -461,7 +401,7 @@ export default function PremiumHomePage() {
       <ConsortiumTypesSection />
       <StatsSection />
       <HowItWorksSection />
-      <TestimonialsSection />
+      <TestimonialsCarousel />
       <FinalCTASection />
     </>
   );

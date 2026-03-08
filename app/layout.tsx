@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import RevealScript from "@/components/ui/RevealScript";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -80,6 +81,7 @@ export default function RootLayout({
         </a>
         <Header />
         <main id="main-content">{children}</main>
+        <WhatsAppButton />
         <RevealScript />
       </body>
     </html>
