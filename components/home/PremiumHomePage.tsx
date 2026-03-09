@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   TrendingUp,
   Home,
@@ -12,6 +13,8 @@ import {
   Users,
   Sparkles,
   Zap,
+  Heart,
+  Star,
 } from "lucide-react";
 import SimulatorCard from "./SimulatorCard";
 import TestimonialsCarousel from "./TestimonialsCarousel";
@@ -88,6 +91,98 @@ function HeroSection() {
         <div className="w-6 h-10 rounded-full border-2 border-navy-400/50 flex justify-center pt-2">
           <div className="w-1.5 h-1.5 rounded-full bg-brand" />
         </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================
+// WHO WE ARE SECTION
+// ============================================
+
+const values = [
+  { icon: Heart, label: "Transparência", desc: "Nada de letras miúdas. Tudo claro, do início ao fim." },
+  { icon: Shield, label: "Segurança", desc: "Administradoras reguladas pelo Banco Central do Brasil." },
+  { icon: Star, label: "Excelência", desc: "Atendimento personalizado com foco no seu resultado." },
+  { icon: Users, label: "Pessoas", desc: "+ de 10 mil famílias realizaram sonhos com a gente." },
+];
+
+function WhoWeAreSection() {
+  return (
+    <section
+      id="quem-somos"
+      className="py-16 lg:py-28 bg-dark-card relative overflow-hidden"
+      aria-labelledby="who-heading"
+    >
+      {/* subtle bg orbs */}
+      <div className="absolute -top-32 -right-32 w-[30rem] h-[30rem] bg-brand/8 rounded-full blur-[140px]" aria-hidden="true" />
+      <div className="absolute -bottom-32 -left-32 w-[30rem] h-[30rem] bg-accent-cyan/5 rounded-full blur-[140px]" aria-hidden="true" />
+
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* ── Text block ── */}
+        <div className="css-reveal text-center mb-14">
+          <span className="inline-block text-sm font-semibold text-brand uppercase tracking-wider mb-4">
+            Quem Somos
+          </span>
+          <h2
+            id="who-heading"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance leading-[1.1]"
+          >
+            Especialistas em transformar{" "}
+            <span className="gradient-text">sonhos em patrimônio</span>
+          </h2>
+          <p className="text-lg text-navy-300 leading-relaxed max-w-3xl mx-auto text-pretty mb-6">
+            A <strong className="text-white">Patrimônio Programado</strong> nasceu com um propósito claro:
+            tornar o acesso ao crédito mais justo, inteligente e acessível para todos os brasileiros.
+            Acreditamos que construir patrimônio não deve ser privilégio de poucos — e o consórcio
+            é a ferramenta que prova isso todos os dias.
+          </p>
+          <p className="text-base text-navy-400 leading-relaxed max-w-2xl mx-auto text-pretty">
+            Com anos de experiência no mercado, unimos tecnologia, transparência e atendimento
+            humanizado para guiar cada cliente na melhor estratégia de contemplação. Somos mais
+            do que uma administradora: somos parceiros na jornada de quem quer crescer.
+          </p>
+        </div>
+
+        {/* ── Values grid ── */}
+        <div className="css-reveal grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+          {values.map(({ icon: Icon, label, desc }, i) => (
+            <div
+              key={label}
+              className="glass-card rounded-2xl p-5 text-center flex flex-col items-center gap-3"
+              style={{ transitionDelay: `${i * 0.08}s` }}
+            >
+              <div className="w-11 h-11 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center">
+                <Icon className="w-5 h-5 text-brand" aria-hidden="true" />
+              </div>
+              <p className="font-semibold text-white text-sm">{label}</p>
+              <p className="text-navy-400 text-xs leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Consultant photo ── */}
+        <div className="css-reveal flex flex-col items-center">
+          {/* gradient border frame */}
+          <div className="p-[2px] rounded-3xl bg-gradient-to-br from-brand/60 via-accent-cyan/30 to-transparent w-full max-w-sm sm:max-w-md shadow-2xl shadow-black/40">
+            <div className="rounded-3xl overflow-hidden bg-dark">
+              <Image
+                src="/consultor.jpeg"
+                alt="Consultor Patrimônio Programado"
+                width={600}
+                height={750}
+                className="w-full h-auto object-cover object-top"
+              />
+            </div>
+          </div>
+          {/* badge */}
+          <div className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-dark border border-brand/30 text-white text-sm font-semibold shadow-lg">
+            <Award className="w-4 h-4 text-brand" aria-hidden="true" />
+            Consultor Certificado · Regulado pelo BC
+          </div>
+        </div>
+
       </div>
     </section>
   );
@@ -397,6 +492,7 @@ export default function PremiumHomePage() {
   return (
     <>
       <HeroSection />
+      <WhoWeAreSection />
       <BenefitsSection />
       <ConsortiumTypesSection />
       <StatsSection />

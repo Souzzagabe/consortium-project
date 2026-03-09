@@ -541,6 +541,169 @@ input[type="range"]::-moz-range-thumb {
   }
 }
 
+/* ========================================
+   LICENSE GUARD — LOCK SCREEN
+   ======================================== */
+
+.license-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-dark);
+}
+
+.license-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid var(--color-dark-border);
+  border-top-color: var(--color-brand);
+  border-radius: 50%;
+  animation: lk-spin 0.8s linear infinite;
+}
+
+@keyframes lk-spin {
+  to { transform: rotate(360deg); }
+}
+
+.license-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-dark);
+  padding: 1rem;
+}
+
+.license-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 2.5rem 2rem;
+  background: var(--color-dark-card);
+  border: 1px solid var(--color-dark-border);
+  border-radius: 1.25rem;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+.license-lock-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: rgba(0, 191, 111, 0.08);
+  border: 1px solid rgba(0, 191, 111, 0.2);
+  color: var(--color-brand);
+}
+
+.license-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.license-message {
+  color: var(--color-navy-300);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.license-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.license-input-wrapper {
+  position: relative;
+}
+
+.license-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: var(--color-dark);
+  border: 1px solid var(--color-dark-border);
+  border-radius: 0.625rem;
+  color: #f1f5f9;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.license-input::placeholder {
+  color: var(--color-navy-400);
+}
+
+.license-input:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(0, 191, 111, 0.15);
+}
+
+.license-button {
+  padding: 0.875rem 1.5rem;
+  background: var(--color-brand);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.625rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s, transform 0.1s;
+}
+
+.license-button:hover:not(:disabled) {
+  background: var(--color-brand-dark);
+}
+
+.license-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.license-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.license-btn-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.license-btn-spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: lk-spin 0.6s linear infinite;
+}
+
+.license-error {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: -0.25rem;
+}
+
+.license-footer {
+  margin-top: 2rem;
+  color: var(--color-navy-500);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
 /* Hide expensive gradient orbs on mobile */
 .gradient-orb {
   display: none;

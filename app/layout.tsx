@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import RevealScript from "@/components/ui/RevealScript";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import LicenseGuard from "@/components/LicenseGuard";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -76,13 +77,15 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.variable} antialiased`}>
-        <a href="#main-content" className="skip-link">
-          Pular para o conteúdo principal
-        </a>
-        <Header />
-        <main id="main-content">{children}</main>
-        <WhatsAppButton />
-        <RevealScript />
+        <LicenseGuard>
+          <a href="#main-content" className="skip-link">
+            Pular para o conteúdo principal
+          </a>
+          <Header />
+          <main id="main-content">{children}</main>
+          <WhatsAppButton />
+          <RevealScript />
+        </LicenseGuard>
       </body>
     </html>
   );
