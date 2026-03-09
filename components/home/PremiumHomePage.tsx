@@ -13,8 +13,6 @@ import {
   Users,
   Sparkles,
   Zap,
-  Heart,
-  Star,
 } from "lucide-react";
 import SimulatorCard from "./SimulatorCard";
 import TestimonialsCarousel from "./TestimonialsCarousel";
@@ -59,7 +57,7 @@ function HeroSection() {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </span>
               </Link>
-              <Link href="/como-funciona" className="btn-secondary">
+              <Link href="#quem-sou-eu" className="btn-secondary">
                 Como Funciona
               </Link>
             </div>
@@ -97,89 +95,131 @@ function HeroSection() {
 }
 
 // ============================================
-// WHO WE ARE SECTION
+// ABOUT SECTION — Quem Sou Eu
 // ============================================
 
-const values = [
-  { icon: Heart, label: "Transparência", desc: "Nada de letras miúdas. Tudo claro, do início ao fim." },
-  { icon: Shield, label: "Segurança", desc: "Administradoras reguladas pelo Banco Central do Brasil." },
-  { icon: Star, label: "Excelência", desc: "Atendimento personalizado com foco no seu resultado." },
-  { icon: Users, label: "Pessoas", desc: "+ de 10 mil famílias realizaram sonhos com a gente." },
+const adminLogos = [
+  { src: "/logos/canopus.png",    alt: "Consórcio Canopus" },
+  { src: "/logos/itau.png",       alt: "Consórcio Itaú" },
+  { src: "/logos/embracon.png",   alt: "Consórcio Embracon" },
+  { src: "/logos/sponchiado.png", alt: "Sponchiado Consórcios" },
+  { src: "/logos/magalu.png",     alt: "Consórcio Magalu" },
+  { src: "/logos/santander.png",  alt: "Consórcio Santander" },
+  { src: "/logos/cnp.png",        alt: "CNP Consórcio" },
 ];
 
 function WhoWeAreSection() {
   return (
     <section
-      id="quem-somos"
+      id="quem-sou-eu"
       className="py-16 lg:py-28 bg-dark-card relative overflow-hidden"
-      aria-labelledby="who-heading"
+      aria-labelledby="about-heading"
     >
-      {/* subtle bg orbs */}
-      <div className="absolute -top-32 -right-32 w-[30rem] h-[30rem] bg-brand/8 rounded-full blur-[140px]" aria-hidden="true" />
-      <div className="absolute -bottom-32 -left-32 w-[30rem] h-[30rem] bg-accent-cyan/5 rounded-full blur-[140px]" aria-hidden="true" />
+      <div className="absolute -top-40 -right-40 w-[36rem] h-[36rem] bg-brand/8 rounded-full blur-[160px]" aria-hidden="true" />
+      <div className="absolute -bottom-40 -left-40 w-[36rem] h-[36rem] bg-accent-cyan/5 rounded-full blur-[160px]" aria-hidden="true" />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ── Text block ── */}
-        <div className="css-reveal text-center mb-14">
-          <span className="inline-block text-sm font-semibold text-brand uppercase tracking-wider mb-4">
-            Quem Somos
-          </span>
-          <h2
-            id="who-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance leading-[1.1]"
-          >
-            Especialistas em transformar{" "}
-            <span className="gradient-text">sonhos em patrimônio</span>
-          </h2>
-          <p className="text-lg text-navy-300 leading-relaxed max-w-3xl mx-auto text-pretty mb-6">
-            A <strong className="text-white">Patrimônio Programado</strong> nasceu com um propósito claro:
-            tornar o acesso ao crédito mais justo, inteligente e acessível para todos os brasileiros.
-            Acreditamos que construir patrimônio não deve ser privilégio de poucos — e o consórcio
-            é a ferramenta que prova isso todos os dias.
-          </p>
-          <p className="text-base text-navy-400 leading-relaxed max-w-2xl mx-auto text-pretty">
-            Com anos de experiência no mercado, unimos tecnologia, transparência e atendimento
-            humanizado para guiar cada cliente na melhor estratégia de contemplação. Somos mais
-            do que uma administradora: somos parceiros na jornada de quem quer crescer.
-          </p>
-        </div>
-
-        {/* ── Values grid ── */}
-        <div className="css-reveal grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-          {values.map(({ icon: Icon, label, desc }, i) => (
-            <div
-              key={label}
-              className="glass-card rounded-2xl p-5 text-center flex flex-col items-center gap-3"
-              style={{ transitionDelay: `${i * 0.08}s` }}
-            >
-              <div className="w-11 h-11 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center">
-                <Icon className="w-5 h-5 text-brand" aria-hidden="true" />
+        {/* ── 1. Photo ── */}
+        <div className="css-reveal flex flex-col items-center mb-12">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-full bg-brand/20 blur-[60px] scale-110" aria-hidden="true" />
+            <div className="relative p-[3px] rounded-full bg-gradient-to-br from-brand via-accent-cyan to-brand/20">
+              <div className="w-48 h-48 sm:w-60 sm:h-60 rounded-full overflow-hidden">
+                <Image
+                  src="/consultor.jpeg"
+                  alt="Matheus Rocha — Consultor Patrimônio Programado"
+                  width={480}
+                  height={600}
+                  className="w-full h-full object-cover object-top"
+                  priority
+                />
               </div>
-              <p className="font-semibold text-white text-sm">{label}</p>
-              <p className="text-navy-400 text-xs leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* ── Consultant photo ── */}
-        <div className="css-reveal flex flex-col items-center">
-          {/* gradient border frame */}
-          <div className="p-[2px] rounded-3xl bg-gradient-to-br from-brand/60 via-accent-cyan/30 to-transparent w-full max-w-sm sm:max-w-md shadow-2xl shadow-black/40">
-            <div className="rounded-3xl overflow-hidden bg-dark">
-              <Image
-                src="/consultor.jpeg"
-                alt="Consultor Patrimônio Programado"
-                width={600}
-                height={750}
-                className="w-full h-auto object-cover object-top"
-              />
             </div>
           </div>
-          {/* badge */}
-          <div className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-dark border border-brand/30 text-white text-sm font-semibold shadow-lg">
+          <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark border border-brand/30 text-white text-sm font-semibold shadow-lg">
             <Award className="w-4 h-4 text-brand" aria-hidden="true" />
             Consultor Certificado · Regulado pelo BC
+          </div>
+        </div>
+
+        {/* ── 2. Text ── */}
+        <div className="css-reveal mb-16">
+          <div className="text-center mb-8">
+            <span className="inline-block text-sm font-semibold text-brand uppercase tracking-wider mb-3">
+              Quem sou eu
+            </span>
+            <h2
+              id="about-heading"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.1] text-balance"
+            >
+              Muito prazer, me chamo{" "}
+              <span className="gradient-text">Matheus Rocha</span>
+            </h2>
+          </div>
+
+          <div className="glass-card rounded-3xl p-6 sm:p-10 space-y-5 text-navy-300 leading-relaxed text-base sm:text-lg">
+            <p>
+              Atuo no mercado de consórcios há mais de{" "}
+              <strong className="text-white">4 anos</strong>, ajudando pessoas a
+              conquistarem crédito de forma estratégica e planejada.
+            </p>
+            <p>
+              Hoje represento{" "}
+              <strong className="text-white">7 administradoras de consórcio</strong>, o que
+              me permite analisar diferentes grupos, prazos e condições para encontrar as
+              melhores oportunidades para cada cliente.
+            </p>
+            <p>
+              Essa independência me permite algo muito importante:{" "}
+              <strong className="text-white">maior assertividade na contemplação de créditos</strong>,
+              já que não fico limitado a apenas uma administradora.
+            </p>
+            <p>
+              Ao longo desses anos acompanhando o mercado, percebi que muitas pessoas utilizam
+              o consórcio apenas como uma forma de comprar bens. Mas, na prática, ele pode ser
+              muito mais do que isso.
+            </p>
+            <p>
+              Foi a partir dessa visão que desenvolvi o{" "}
+              <strong className="text-white">Método Patrimônio Programado</strong> — uma forma
+              estratégica de utilizar o consórcio para construção de patrimônio, planejamento
+              financeiro e crescimento de capital ao longo do tempo.
+            </p>
+            <p>
+              Hoje minha missão é ajudar principalmente{" "}
+              <strong className="text-white">autônomos, empresários e MEIs</strong>, que muitas
+              vezes não possuem um plano de aposentadoria estruturado, a construírem patrimônio
+              de forma inteligente e planejada.
+            </p>
+            <p className="text-white font-medium">
+              Porque, quando utilizado com estratégia, o consórcio deixa de ser apenas uma
+              compra parcelada e passa a ser uma{" "}
+              <span className="gradient-text font-bold">poderosa ferramenta de construção patrimonial</span>.
+            </p>
+          </div>
+        </div>
+
+        {/* ── 3. Partner logos ── */}
+        <div className="css-reveal">
+          <p className="text-center text-sm font-semibold text-brand uppercase tracking-wider mb-8">
+            Administradoras que represento
+          </p>
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-4 items-center justify-items-center">
+            {adminLogos.map(({ src, alt }) => (
+              <div
+                key={alt}
+                className="w-full flex items-center justify-center p-3 rounded-2xl bg-white/5 border border-dark-border hover:border-brand/30 hover:bg-white/10 transition-all duration-300"
+              >
+                <Image
+                  src={src}
+                  alt={alt}
+                  width={100}
+                  height={60}
+                  className="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
+            ))}
           </div>
         </div>
 
