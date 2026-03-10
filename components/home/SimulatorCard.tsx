@@ -149,7 +149,7 @@ export default function SimulatorCard() {
         </div>
 
         {/* CTA */}
-        <Link href="/planos" className="btn-primary w-full">
+        <Link href="/planos#formulario" className="btn-primary w-full">
           <span className="flex items-center justify-center gap-2">
             Solicitar Proposta
           </span>

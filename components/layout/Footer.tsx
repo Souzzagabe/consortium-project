@@ -97,11 +97,11 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:gabweb95@gmail.com"
+                  href="mailto:mateusmutiplica@gmail.com"
                   className="flex items-start gap-3 text-sm text-navy-300 hover:text-brand transition-colors group"
                 >
                   <Mail className="w-5 h-5 text-brand shrink-0 mt-0.5" aria-hidden="true" />
-                  <span>gabweb95@gmail.com</span>
+                  <span>mateusmutiplica@gmail.com</span>
                 </a>
               </li>
               <li>
@@ -125,7 +125,20 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="py-6 border-t border-dark-border flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-navy-500">
-          <p>© 2026 Patrimônio Programado. Todos os direitos reservados.</p>
+          <div>
+            <p>© 2026 Patrimônio Programado. Todos os direitos reservados.</p>
+            <p className="mt-1 text-xs text-navy-500">
+              Desenvolvido por{" "}
+              <a
+                href="https://instagram.com/souzzagabe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand hover:text-brand/80 transition-colors"
+              >
+                @souzzagabe
+              </a>
+            </p>
+          </div>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-navy-300 transition-colors">
               Privacidade

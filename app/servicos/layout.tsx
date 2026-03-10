@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Serviços de Consórcio",
+  title: "Serviços de Consórcio | Imobiliário, Veículos e Empresarial",
   description:
-    "Conheça os serviços do Patrimônio Programado: consórcio imobiliário, de veículos e empresarial. Sem juros e crédito de até R$ 5 milhões.",
+    "Conheça os serviços do Patrimônio Programado: consórcio imobiliário de R$ 100 mil a R$ 500 mil, veículos de R$ 70 mil a R$ 1 milhão e serviços. Sem juros, com contemplação estratégica.",
   openGraph: {
     title: "Serviços de Consórcio | Patrimônio Programado",
     description:
-      "Consórcio imobiliário, de veículos e empresarial. Realize seus sonhos sem juros com o Patrimônio Programado.",
+      "Consórcio imobiliário, de veículos e empresarial sem juros. Crédito de até R$ 5 milhões com estratégias de contemplação.",
     type: "website",
     locale: "pt_BR",
   },
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Serviços de Consórcio | Patrimônio Programado",
     description:
-      "Consórcio imobiliário, de veículos e empresarial sem juros.",
+      "Consórcio imobiliário, de veículos e empresarial sem juros. Crédito de até R$ 5 milhões.",
   },
   alternates: { canonical: "/servicos" },
 };

@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
     await resend.emails.send({
       from: "Matheus Multiplica <onboarding@resend.dev>",
-      to: "gabweb95@gmail.com",
+      to: "mateusmutiplica@gmail.com",
       subject: `Novo lead: ${nome}`,
       html: `
         <h2 style="color:#00BF6F;">Novo Lead - Matheus Multiplica</h2>

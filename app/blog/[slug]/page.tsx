@@ -1,6 +1,7 @@
 import { ArrowLeft, Calendar, Clock, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
+import type { Metadata } from "next";
 import {
   AnimatedSection,
   CTASection,
@@ -73,6 +74,33 @@ const articles: Record<string, ArticleData> = {
 
 export function generateStaticParams() {
   return Object.keys(articles).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles[slug];
+  if (!article) return { title: "Artigo não encontrado" };
+
+  return {
+    title: article.title,
+    description: article.description,
+    openGraph: {
+      title: `${article.title} | Patrimônio Programado`,
+      description: article.description,
+      type: "article",
+      locale: "pt_BR",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description,
+    },
+    alternates: { canonical: `/blog/${slug}` },
+  };
 }
 
 export default async function BlogArticlePage({

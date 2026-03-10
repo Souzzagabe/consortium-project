@@ -29,7 +29,7 @@ export default function LeadForm() {
   };
 
   return (
-    <section className="py-12 sm:py-16 lg:py-24 bg-dark">
+    <section id="formulario" className="py-12 sm:py-16 lg:py-24 bg-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-lg mx-auto">
           <div className="text-center mb-6 sm:mb-8">

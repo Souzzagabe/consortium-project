@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog – Educação Financeira",
+  title: "Blog | Educação Financeira e Consórcio",
   description:
-    "Artigos e dicas sobre consórcio, investimentos e planejamento financeiro. Aprenda a construir patrimônio com o Patrimônio Programado.",
+    "Artigos, dicas e guias completos sobre consórcio, investimentos e planejamento financeiro. Aprenda a construir patrimônio de forma inteligente.",
   openGraph: {
     title: "Blog – Educação Financeira | Patrimônio Programado",
     description:
-      "Artigos sobre consórcio, investimentos e planejamento financeiro para crescer seu patrimônio.",
+      "Artigos sobre consórcio, investimentos e planejamento financeiro para crescer seu patrimônio de forma estratégica.",
     type: "website",
     locale: "pt_BR",
   },

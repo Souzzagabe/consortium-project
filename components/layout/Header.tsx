@@ -93,7 +93,7 @@ export default function Header() {
           {/* CTA */}
           <div className="hidden lg:flex items-center">
             <Link
-              href="/planos"
+              href="/planos#formulario"
               className="btn-primary inline-flex items-center"
             >
               <span>COMECE SEU PLANO</span>
@@ -151,7 +151,7 @@ export default function Header() {
           ))}
           <li className="mt-4">
             <Link
-              href="/planos"
+              href="/planos#formulario"
               onClick={() => setMobileOpen(false)}
               tabIndex={mobileOpen ? 0 : -1}
               className="btn-primary block text-center"
