@@ -84,6 +84,9 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "/" },
   category: "finance",
+  verification: {
+    google: "3GX0Jbay8Oz5WrIJtvvwTPn__6jv7zmmemxXPRQyeb4",
+  },
 };
 
 const jsonLd = {
