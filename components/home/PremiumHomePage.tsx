@@ -68,10 +68,6 @@ function HeroSection() {
                 <span>100% Seguro</span>
               </div>
               <div className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-brand" aria-hidden="true" />
-                <span>+10.000 Clientes</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <Award className="w-5 h-5 text-brand" aria-hidden="true" />
                 <span>Regulado pelo BC</span>
               </div>
@@ -316,7 +312,7 @@ const consortiumTypes = [
     icon: Home,
     title: "Imobiliário",
     description: "Conquiste a casa própria, apartamento, terreno ou imóvel comercial com crédito planejado e sem juros.",
-    values: "R$ 100 mil a R$ 500 mil",
+    values: "R$ 100 mil a R$ 5 milhões",
     color: "from-brand to-brand-dark",
   },
   {
@@ -454,17 +450,16 @@ function HowItWorksSection() {
 // ============================================
 
 const stats = [
-  { value: "10.000+", label: "Clientes Satisfeitos" },
   { value: "R$ 50M+", label: "Crédito Liberado" },
   { value: "98%", label: "Taxa de Satisfação" },
-  { value: "15+", label: "Anos de Experiência" },
+  { value: "4+", label: "Anos de Experiência" },
 ];
 
 function StatsSection() {
   return (
     <section className="py-12 lg:py-24 bg-dark-card border-y border-dark-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-3 gap-8 lg:gap-12">
           {stats.map((stat, index) => (
             <div
               key={stat.label}
@@ -510,7 +505,7 @@ function FinalCTASection() {
               <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </Link>
             <a
-              href="https://wa.me/5551981179752"
+              href="https://wa.me/555197147766"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-colors"

@@ -203,7 +203,7 @@ export default function ComoFuncionaPage() {
                   </span>
                 </Link>
                 <a
-                  href="https://wa.me/5551981179752"
+                  href="https://wa.me/555197147766"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary inline-flex items-center justify-center gap-2"

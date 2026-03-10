@@ -22,8 +22,8 @@ const SITE_URL = "https://matheusmultiplica.com.br";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Patrimônio Programado | Consórcio Inteligente em Porto Alegre",
-    template: "%s | Patrimônio Programado",
+    default: "Matheus Multiplica | Consórcio Inteligente em Porto Alegre",
+    template: "%s | Matheus Multiplica",
   },
   description:
     "Consórcio inteligente sem juros para imóveis, veículos e serviços. Simule seu consórcio online e construa patrimônio com estratégia. Atendimento personalizado em Porto Alegre, RS.",
@@ -37,6 +37,7 @@ export const metadata: Metadata = {
     "planejamento financeiro",
     "investimento",
     "Patrimônio Programado",
+    "Matheus Multiplica",
     "consórcio sem juros",
     "simulação de consórcio",
     "Matheus Rocha consórcio",
@@ -45,14 +46,14 @@ export const metadata: Metadata = {
     "lance estratégico",
   ],
   authors: [{ name: "Matheus Rocha", url: SITE_URL }],
-  creator: "Patrimônio Programado",
-  publisher: "Patrimônio Programado",
+  creator: "Matheus Multiplica",
+  publisher: "Matheus Multiplica",
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: SITE_URL,
-    siteName: "Patrimônio Programado",
-    title: "Patrimônio Programado | Consórcio Inteligente sem Juros",
+    siteName: "Matheus Multiplica",
+    title: "Matheus Multiplica | Consórcio Inteligente sem Juros",
     description:
       "Consórcio inteligente sem juros para imóveis, veículos e serviços. Simule online e construa patrimônio com estratégia personalizada.",
     images: [
@@ -60,13 +61,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Patrimônio Programado — Consórcio Inteligente",
+        alt: "Matheus Multiplica — Consórcio Inteligente",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Patrimônio Programado | Consórcio Inteligente",
+    title: "Matheus Multiplica | Consórcio Inteligente",
     description:
       "Consórcio sem juros para imóveis, veículos e serviços. Simule online e construa patrimônio.",
     images: ["/og-image.png"],
@@ -95,7 +96,7 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
-      name: "Patrimônio Programado",
+      name: "Matheus Multiplica",
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
@@ -103,7 +104,7 @@ const jsonLd = {
       },
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+55-51-98117-9752",
+        telephone: "+55-51-97147-766",
         contactType: "customer service",
         availableLanguage: "Portuguese",
         areaServed: "BR",
@@ -114,18 +115,18 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       url: SITE_URL,
-      name: "Patrimônio Programado",
+      name: "Matheus Multiplica",
       publisher: { "@id": `${SITE_URL}/#organization` },
       inLanguage: "pt-BR",
     },
     {
       "@type": "FinancialService",
       "@id": `${SITE_URL}/#business`,
-      name: "Patrimônio Programado — Consórcio Inteligente",
+      name: "Matheus Multiplica — Consórcio Inteligente",
       description:
         "Consultoria especializada em consórcio para imóveis, veículos e serviços. Mais de 7 administradoras, sem juros, com estratégias de contemplação.",
       url: SITE_URL,
-      telephone: "+55-51-98117-9752",
+      telephone: "+55-51-97147-766",
       email: "mateusmutiplica@gmail.com",
       address: {
         "@type": "PostalAddress",

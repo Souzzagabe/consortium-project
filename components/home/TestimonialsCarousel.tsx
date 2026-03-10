@@ -2,28 +2,64 @@
 
 import { useRef } from "react";
 
-const testimonials = [
-  { name: "Maria Silva", role: "Empresária", content: "Consegui minha casa própria em apenas 18 meses. O consórcio foi a melhor decisão financeira que já tomei.", rating: 5 },
-  { name: "João Santos", role: "Engenheiro", content: "A estratégia de lance me ajudou a ser contemplado rapidamente. Equipe super atenciosa e profissional.", rating: 5 },
-  { name: "Ana Oliveira", role: "Médica", content: "Renovei toda minha frota de veículos sem pagar juros absurdos. Recomendo para todos!", rating: 5 },
-  { name: "Carlos Mendes", role: "Empresário", content: "Planejei a expansão da minha empresa com o consórcio empresarial. Sem juros e com total segurança.", rating: 5 },
-  { name: "Fernanda Lima", role: "Professora", content: "Realizei o sonho do apartamento próprio sem comprometer meu orçamento. Atendimento impecável!", rating: 5 },
-  { name: "Roberto Costa", role: "Médico", content: "Renovei meu consultório com o consórcio empresarial. Processo simples e sem burocracia.", rating: 5 },
+/* ── Opportunity data ───────────────────────────────────── */
+const opportunities = [
+  { type: "Imóvel",  credit: "R$ 200.000",   parcela: "R$ 849",    icon: "house"   },
+  { type: "Veículo", credit: "R$ 70.000",    parcela: "R$ 593",    icon: "car"     },
+  { type: "Imóvel",  credit: "R$ 350.000",   parcela: "R$ 1.485",  icon: "building"},
+  { type: "Veículo", credit: "R$ 150.000",   parcela: "R$ 1.272",  icon: "truck"   },
+  { type: "Imóvel",  credit: "R$ 500.000",   parcela: "R$ 2.122",  icon: "house"   },
+  { type: "Imóvel",  credit: "R$ 750.000",   parcela: "R$ 3.180",  icon: "building"},
+  { type: "Veículo", credit: "R$ 300.000",   parcela: "R$ 2.544",  icon: "car"     },
+  { type: "Imóvel",  credit: "R$ 1.000.000", parcela: "R$ 4.240",  icon: "house"   },
 ];
 
-// Duplicate for seamless infinite loop
-const allCards = [...testimonials, ...testimonials];
+const allCards = [...opportunities, ...opportunities];
 
-function StarRating({ rating, name }: { rating: number; name: string }) {
-  return (
-    <div className="flex gap-1 mb-4" role="img" aria-label={`Avaliação de ${name}: ${rating} de 5 estrelas`}>
-      {Array.from({ length: rating }).map((_, i) => (
-        <svg key={i} className="w-5 h-5 text-brand" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+/* ── Inline SVG icons (no external images needed) ────── */
+function OpportunityIcon({ icon }: { icon: string }) {
+  const cls = "w-12 h-12 sm:w-14 sm:h-14 text-brand";
+  switch (icon) {
+    case "house":
+      return (
+        <svg className={cls} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 24L24 8l18 16" />
+          <path d="M10 22v16a2 2 0 002 2h24a2 2 0 002-2V22" />
+          <rect x="18" y="28" width="12" height="12" rx="1" />
         </svg>
-      ))}
-    </div>
-  );
+      );
+    case "building":
+      return (
+        <svg className={cls} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="8" y="6" width="32" height="36" rx="2" />
+          <rect x="14" y="12" width="6" height="5" rx="1" />
+          <rect x="28" y="12" width="6" height="5" rx="1" />
+          <rect x="14" y="22" width="6" height="5" rx="1" />
+          <rect x="28" y="22" width="6" height="5" rx="1" />
+          <rect x="19" y="34" width="10" height="8" rx="1" />
+        </svg>
+      );
+    case "car":
+      return (
+        <svg className={cls} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 28l3-10a3 3 0 013-2h24a3 3 0 013 2l3 10" />
+          <rect x="4" y="28" width="40" height="10" rx="3" />
+          <circle cx="14" cy="38" r="3" fill="currentColor" />
+          <circle cx="34" cy="38" r="3" fill="currentColor" />
+        </svg>
+      );
+    case "truck":
+      return (
+        <svg className={cls} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="14" width="28" height="18" rx="2" />
+          <path d="M30 22h8l6 6v4a2 2 0 01-2 2h-12" />
+          <circle cx="12" cy="36" r="3" fill="currentColor" />
+          <circle cx="38" cy="36" r="3" fill="currentColor" />
+        </svg>
+      );
+    default:
+      return null;
+  }
 }
 
 export default function TestimonialsCarousel() {
@@ -39,7 +75,7 @@ export default function TestimonialsCarousel() {
   return (
     <section
       className="py-16 lg:py-32 bg-dark relative overflow-hidden"
-      aria-labelledby="testimonials-heading"
+      aria-labelledby="opportunities-heading"
     >
       <div
         className="gradient-orb absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand/5 rounded-full blur-[100px]"
@@ -50,34 +86,34 @@ export default function TestimonialsCarousel() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="css-reveal text-center mb-12 lg:mb-16">
           <span className="inline-block text-sm font-semibold text-brand uppercase tracking-wider mb-4">
-            Depoimentos
+            Oportunidades
           </span>
           <h2
-            id="testimonials-heading"
+            id="opportunities-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
           >
-            O que nossos clientes{" "}
-            <span className="gradient-text">dizem</span>
+            Conheça nossos{" "}
+            <span className="gradient-text">consórcios</span>
           </h2>
+          <p className="text-navy-300 text-lg max-w-2xl mx-auto">
+            Créditos para imóveis e veículos com as menores taxas do mercado, sem juros e sem entrada.
+          </p>
         </div>
       </div>
 
-      {/* Carousel — full-width, overflow hidden with edge fades */}
+      {/* Carousel */}
       <div className="relative w-full overflow-hidden">
-        {/* Left fade */}
         <div
           className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-40 z-10"
           style={{ background: "linear-gradient(to right, var(--color-dark), transparent)" }}
           aria-hidden="true"
         />
-        {/* Right fade */}
         <div
           className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-40 z-10"
           style={{ background: "linear-gradient(to left, var(--color-dark), transparent)" }}
           aria-hidden="true"
         />
 
-        {/* Scrolling track — duplicated cards for seamless loop */}
         <div
           ref={trackRef}
           className="flex gap-6 marquee-track"
@@ -85,31 +121,36 @@ export default function TestimonialsCarousel() {
           onMouseLeave={resume}
           onFocus={pause}
           onBlur={resume}
-          aria-label="Carrossel de depoimentos"
+          aria-label="Carrossel de oportunidades de consórcio"
         >
-          {allCards.map((t, i) => (
+          {allCards.map((o, i) => (
             <article
               key={i}
-              className="shrink-0 w-[300px] sm:w-[360px] glass-card rounded-2xl p-6 sm:p-8 flex flex-col"
-              aria-label={`Depoimento de ${t.name}`}
+              className="shrink-0 w-[260px] sm:w-[300px] glass-card rounded-2xl p-6 sm:p-8 flex flex-col items-center text-center"
+              aria-label={`Consórcio de ${o.type} ${o.credit}`}
             >
-              <StarRating rating={t.rating} name={t.name} />
-              <p className="text-navy-200 leading-relaxed mb-6 flex-grow text-sm sm:text-base">
-                &ldquo;{t.content}&rdquo;
+              {/* Icon */}
+              <div className="mb-4 p-3 rounded-2xl bg-brand/10">
+                <OpportunityIcon icon={o.icon} />
+              </div>
+
+              {/* Badge */}
+              <span className="inline-block text-[10px] sm:text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 px-3 py-1 rounded-full mb-4">
+                {o.type}
+              </span>
+
+              {/* Credit */}
+              <p className="text-xs text-navy-400 mb-1">Crédito</p>
+              <p className="text-2xl sm:text-3xl font-bold gradient-text mb-4">
+                {o.credit}
               </p>
-              <div className="flex items-center gap-4 mt-auto">
-                <div
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full gradient-brand flex items-center justify-center shrink-0"
-                  aria-hidden="true"
-                >
-                  <span className="text-white font-bold text-sm sm:text-base">
-                    {t.name.charAt(0)}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-semibold text-white text-sm sm:text-base">{t.name}</p>
-                  <p className="text-sm text-navy-400">{t.role}</p>
-                </div>
+
+              {/* Parcela */}
+              <div className="w-full border-t border-white/10 pt-4">
+                <p className="text-xs text-navy-400 mb-1">Parcela a partir de</p>
+                <p className="text-lg sm:text-xl font-semibold text-white">
+                  {o.parcela}<span className="text-sm text-navy-400 font-normal">/mês</span>
+                </p>
               </div>
             </article>
           ))}

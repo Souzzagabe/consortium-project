@@ -23,7 +23,7 @@ export default function LeadForm() {
       `💰 *Valor desejado:* R$ ${form.valorDesejado}\n` +
       `⏰ *Melhor horário para ligação:* ${form.horarioLigacao}`
     );
-    window.open(`https://wa.me/5551981179752?text=${msg}`, "_blank");
+    window.open(`https://wa.me/555197147766?text=${msg}`, "_blank");
     setStatus("success");
     setForm({ nome: "", email: "", telefone: "", valorDesejado: "", horarioLigacao: "" });
   };

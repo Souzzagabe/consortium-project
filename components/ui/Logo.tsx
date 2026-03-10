@@ -11,16 +11,15 @@ export function LogoIcon({
   className?: string;
   size?: "sm" | "md" | "lg";
 }) {
-  const sizes = { sm: 40, md: 48, lg: 64 };
+  const sizes = { sm: 32, md: 40, lg: 56 };
   const s = sizes[size];
-  // Unique gradient IDs per size to avoid collisions when multiple instances render
   const uid = size;
 
   return (
     <svg
       width={s}
       height={s}
-      viewBox="0 0 80 80"
+      viewBox="0 0 64 64"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -28,48 +27,25 @@ export function LogoIcon({
       focusable="false"
     >
       <defs>
-        {/* Bar gradient: dark green (bottom) → bright green (top) */}
-        <linearGradient id={`barG-${uid}`} x1="0" y1="1" x2="0" y2="0" gradientUnits="objectBoundingBox">
-          <stop offset="0%" stopColor="#006B3C" />
-          <stop offset="45%" stopColor="#00BF6F" />
-          <stop offset="100%" stopColor="#39E680" />
-        </linearGradient>
-        {/* Arrow gradient: bright green → cyan */}
-        <linearGradient id={`arrG-${uid}`} x1="0" y1="1" x2="1" y2="0" gradientUnits="objectBoundingBox">
-          <stop offset="0%" stopColor="#39E680" />
-          <stop offset="100%" stopColor="#06b6d4" />
+        <linearGradient id={`bgG-${uid}`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#00BF6F" />
+          <stop offset="100%" stopColor="#00995A" />
         </linearGradient>
       </defs>
-
-      {/* ── House / arch silhouette at base (dark teal) ── */}
-      <path d="M2 78 L40 56 L78 78 Z" fill="#0a5f78" />
-      {/* Inner ridge lines */}
-      <path d="M12 78 L40 62 L68 78" fill="none" stroke="#06b6d4" strokeWidth="1.2" opacity="0.45" />
-      <path d="M22 78 L40 67 L58 78" fill="none" stroke="#06b6d4" strokeWidth="1" opacity="0.3" />
-
-      {/* ── 4 growing bars (share the same bottom baseline y=74) ── */}
-      <rect x="8"  y="56" width="10" height="18" rx="1.5" fill={`url(#barG-${uid})`} />
-      <rect x="22" y="44" width="10" height="30" rx="1.5" fill={`url(#barG-${uid})`} />
-      <rect x="36" y="30" width="10" height="44" rx="1.5" fill={`url(#barG-${uid})`} />
-      <rect x="50" y="12" width="10" height="62" rx="1.5" fill={`url(#barG-${uid})`} />
-
-      {/* ── Diagonal arrow ── */}
-      <line
-        x1="12" y1="58"
-        x2="60" y2="10"
-        stroke={`url(#arrG-${uid})`}
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      {/* Arrowhead */}
+      {/* Rounded square background */}
+      <rect width="64" height="64" rx="16" fill={`url(#bgG-${uid})`} />
+      {/* "M" letter — clean geometric */}
       <path
-        d="M53 5 L64 8 L61 19"
-        fill="none"
-        stroke={`url(#arrG-${uid})`}
+        d="M14 48V22l10 14 10-14v26"
+        stroke="white"
         strokeWidth="4.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        fill="none"
       />
+      {/* Upward trend arrow */}
+      <line x1="38" y1="40" x2="52" y2="20" stroke="white" strokeWidth="4" strokeLinecap="round" />
+      <polyline points="46,18 53,19 52,26" fill="none" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -79,34 +55,36 @@ export default function Logo({
   size = "md",
   showText = true,
 }: LogoProps) {
+  const fs = { sm: "0.85rem", md: "1.05rem", lg: "1.35rem" };
+  const sub = { sm: "0.38rem", md: "0.45rem", lg: "0.56rem" };
+
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
       <LogoIcon size={size} />
       {showText && (
-        <div className="leading-none select-none flex flex-col gap-0.5">
+        <div className="leading-none select-none">
           <span
-            className="font-extrabold tracking-tight block"
-            style={{
-              fontSize: size === "sm" ? "1.15rem" : size === "lg" ? "1.6rem" : "1.35rem",
-              background: "linear-gradient(90deg, #0DB8A0 0%, #06b6d4 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
+            className="font-extrabold tracking-wide text-white block"
+            style={{ fontSize: fs[size], lineHeight: 1.2 }}
           >
-            Patrimônio
+            MATHEUS
           </span>
           <span
-            className="font-bold tracking-tight block"
+            className="font-extrabold tracking-wide text-white block"
+            style={{ fontSize: fs[size], lineHeight: 1.2 }}
+          >
+            <span className="text-brand">+</span>MULTIPLICA
+          </span>
+          <span
+            className="font-medium text-navy-400 block uppercase"
             style={{
-              fontSize: size === "sm" ? "1.0rem" : size === "lg" ? "1.4rem" : "1.15rem",
-              background: "linear-gradient(90deg, #0DB8A0 0%, #06b6d4 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              fontSize: sub[size],
+              letterSpacing: "0.12em",
+              lineHeight: 1.4,
+              marginTop: "2px",
             }}
           >
-            Programado
+            Consórcio e Estratégia Patrimonial
           </span>
         </div>
       )}

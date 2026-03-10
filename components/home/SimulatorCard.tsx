@@ -17,7 +17,7 @@ const TIPOS = {
   imovel: {
     label: "Imóvel",
     icon: Home,
-    taxa: 0.424,
+    taxa: 0.12,
     min: 100000,
     max: 5000000,
     step: 50000,

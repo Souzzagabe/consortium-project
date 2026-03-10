@@ -1,7 +1,7 @@
 "use client";
 
 // Configure your WhatsApp number here (country code + number, no spaces or dashes)
-const WHATSAPP_NUMBER = "5551981179752";
+const WHATSAPP_NUMBER = "555197147766";
 const WHATSAPP_MESSAGE = "Olá! Gostaria de saber mais sobre os planos de consórcio.";
 
 export default function WhatsAppButton() {

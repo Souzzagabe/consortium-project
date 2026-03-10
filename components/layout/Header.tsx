@@ -10,7 +10,7 @@ const navLinks = [
   { href: "/", label: "Início" },
   { href: "/servicos", label: "Serviços" },
   { href: "/como-funciona", label: "Como Funciona" },
-  { href: "/planos", label: "Planos" },
+  { href: "/planos", label: "Carta Contemplada" },
 ];
 
 export default function Header() {
@@ -62,7 +62,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegação principal">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="group" aria-label="Patrimônio Programado — Página inicial">
+          <Link href="/" className="group" aria-label="Matheus Multiplica — Página inicial">
             <Logo size="sm" />
           </Link>
 

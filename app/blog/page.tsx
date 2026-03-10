@@ -126,7 +126,7 @@ export default function BlogPage() {
         primaryCTA={{ text: "Simular Agora", href: "/#simulador" }}
         secondaryCTA={{
           text: "Falar com Consultor",
-          href: "https://wa.me/5551981179752",
+          href: "https://wa.me/555197147766",
           external: true,
         }}
       />

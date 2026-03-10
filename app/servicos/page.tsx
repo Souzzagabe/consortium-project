@@ -16,7 +16,7 @@ const servicos = [
       "Adquirir um imóvel sem pagar juros é possível — e o consórcio imobiliário é o caminho mais inteligente para isso. Seja para conquistar a casa própria, um apartamento, terreno ou imóvel comercial, oferecemos condições sob medida para transformar seu planejamento em patrimônio real.",
     beneficios: [
       "Sem juros — pague apenas taxa administrativa",
-      "Cartas de crédito de R$ 100.000 a R$ 500.000",
+      "Cartas de crédito de R$ 100.000 a R$ 5.000.000",
       "Prazos flexíveis de 60 a 120 meses",
       "Possibilidade de usar FGTS para lance",
       "Poder de compra à vista ao ser contemplado",
@@ -193,7 +193,7 @@ export default function ServicosPage() {
         primaryCTA={{ text: "Simular Agora", href: "/#simulador" }}
         secondaryCTA={{
           text: "Falar com Consultor",
-          href: "https://wa.me/5551981179752",
+          href: "https://wa.me/555197147766",
           external: true,
         }}
       />

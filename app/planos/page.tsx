@@ -1,5 +1,4 @@
-import { Check, ArrowRight, Sparkles, Star } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
 import LeadForm from "@/components/LeadForm";
 import Footer from "@/components/layout/Footer";
 import {
@@ -10,136 +9,105 @@ import {
   CTASection,
 } from "@/components/ui/PremiumComponents";
 
-const TAXA_IMOVEL = 0.424 / 100;
-const TAXA_VEICULO = 0.848 / 100;
-const PRAZO = 240;
-
-const planos = [
-  { credito: 100000,  taxa: TAXA_IMOVEL,  label: "Imóvel",  popular: false },
-  { credito: 200000,  taxa: TAXA_IMOVEL,  label: "Imóvel",  popular: false },
-  { credito: 300000,  taxa: TAXA_IMOVEL,  label: "Imóvel",  popular: true  },
-  { credito: 500000,  taxa: TAXA_IMOVEL,  label: "Imóvel",  popular: false },
-  { credito: 1000000, taxa: TAXA_IMOVEL,  label: "Imóvel",  popular: false },
-  { credito: 70000,   taxa: TAXA_VEICULO, label: "Veículo", popular: false },
-  { credito: 200000,  taxa: TAXA_VEICULO, label: "Veículo", popular: true  },
-  { credito: 500000,  taxa: TAXA_VEICULO, label: "Veículo", popular: false },
+const cartasContempladas = [
+  { administradora: "Bradesco", credito: "R$ 270.000,00", parcelasPagas: 2, parcela: "R$ 1.383,88" },
+  { administradora: "Embracon", credito: "R$ 286.100,00", parcelasPagas: 1, parcela: "R$ 1.456,51" },
+  { administradora: "Caixa", credito: "R$ 353.400,00", parcelasPagas: 1, parcela: "R$ 1.796,00" },
+  { administradora: "Embracon", credito: "R$ 458.690,00", parcelasPagas: 3, parcela: "R$ 2.348,75" },
+  { administradora: "Itaú", credito: "R$ 525.870,00", parcelasPagas: 2, parcela: "R$ 2.676,16" },
+  { administradora: "Caixa", credito: "R$ 579.755,00", parcelasPagas: 2, parcela: "R$ 2.949,30" },
+  { administradora: "Bradesco", credito: "R$ 690.150,00", parcelasPagas: 3, parcela: "R$ 3.518,68" },
+  { administradora: "Itaú", credito: "R$ 812.790,00", parcelasPagas: 4, parcela: "R$ 4.334,50" },
+  { administradora: "Caixa", credito: "R$ 913.230,00", parcelasPagas: 3, parcela: "R$ 4.656,06" },
+  { administradora: "Embracon", credito: "R$ 1.085.375,00", parcelasPagas: 5, parcela: "R$ 5.585,64" },
+  { administradora: "Bradesco", credito: "R$ 1.285.714,00", parcelasPagas: 6, parcela: "R$ 6.648,16" },
+  { administradora: "Caixa", credito: "R$ 1.772.830,77", parcelasPagas: 5, parcela: "R$ 9.112,08" },
+  { administradora: "Embracon", credito: "R$ 2.073.840,00", parcelasPagas: 5, parcela: "R$ 10.655,71" },
+  { administradora: "Caixa", credito: "R$ 2.672.750,00", parcelasPagas: 6, parcela: "R$ 13.797,83" },
+  { administradora: "Bradesco", credito: "R$ 3.415.000,00", parcelasPagas: 5, parcela: "R$ 17.533,46" },
+  { administradora: "Itaú", credito: "R$ 4.745.180,00", parcelasPagas: 6, parcela: "R$ 24.480,46" },
+  { administradora: "Caixa", credito: "R$ 7.100.230,00", parcelasPagas: 7, parcela: "R$ 31.835,00" },
+  { administradora: "Embracon", credito: "R$ 8.688.450,00", parcelasPagas: 8, parcela: "R$ 45.273,38" },
+  { administradora: "Caixa", credito: "R$ 9.882.271,00", parcelasPagas: 7, parcela: "R$ 51.224,38" },
+  { administradora: "Itaú", credito: "R$ 10.756.000,00", parcelasPagas: 9, parcela: "R$ 56.335,31" },
+  { administradora: "Caixa", credito: "R$ 11.146.780,00", parcelasPagas: 8, parcela: "R$ 58.077,18" },
+  { administradora: "Bradesco", credito: "R$ 12.335.500,00", parcelasPagas: 9, parcela: "R$ 64.604,94" },
+  { administradora: "Caixa", credito: "R$ 13.565.890,00", parcelasPagas: 8, parcela: "R$ 68.412,50" },
+  { administradora: "Embracon", credito: "R$ 14.650.000,00", parcelasPagas: 7, parcela: "R$ 74.890,00" },
+  { administradora: "Bradesco", credito: "R$ 15.328.200,00", parcelasPagas: 8, parcela: "R$ 79.855,41" },
 ];
 
-function formatBRL(value: number): string {
-  return value.toLocaleString("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
+const adminColors: Record<string, string> = {
+  Bradesco: "bg-red-600",
+  Embracon: "bg-green-600",
+  Caixa: "bg-blue-600",
+  Itaú: "bg-orange-500",
+};
 
 export default function PlanosPage() {
   return (
     <>
       <PageHero
-        badge="Nossos Planos"
-        title="Escolha o Plano"
+        badge="Carta Contemplada"
+        title="Escolha a Carta"
         titleHighlight="Ideal para Você"
-        description="Compare nossos planos e encontre a melhor opção para o seu objetivo financeiro."
+        description="Compare nossas cartas contempladas e encontre a melhor opção para o seu objetivo financeiro."
       />
 
-      {/* Plans Grid Section */}
-      <section className="py-12 sm:py-16 lg:py-32 bg-dark relative overflow-hidden" aria-label="Tabela de planos">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[128px] gradient-orb" aria-hidden="true" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-cyan/5 rounded-full blur-[128px] gradient-orb" aria-hidden="true" />
+      {/* Cartas Contempladas Section */}
+      <section className="py-12 sm:py-16 lg:py-24 bg-dark relative overflow-hidden" aria-label="Cartas contempladas disponíveis">
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-brand/5 rounded-full blur-[128px] gradient-orb" aria-hidden="true" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="Compare"
-            title="Tabela de"
-            titleHighlight="Planos"
-            description="Valores de crédito, prazos e contribuições mensais estimadas para cada perfil de cliente."
+            badge="Disponíveis agora"
+            title="Cartas"
+            titleHighlight="Contempladas"
+            description="Cartas já contempladas, prontas para utilização. Negocie diretamente com nosso time."
           />
 
-          {/* Cards Grid — 2 cols on mobile, 4 on desktop */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {planos.map((p, idx) => {
-              const contribuicao = p.credito * p.taxa;
-              return (
-                <AnimatedSection key={`${p.credito}-${p.label}`} delay={idx * 0.05}>
-                  <div
-                    className={`relative h-full hover-lift ${p.popular ? "z-10" : ""}`}
-                  >
-                    {/* Popular Badge */}
-                    {p.popular && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
-                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-brand to-brand-dark text-white text-xs font-bold shadow-lg">
-                          <Star className="w-3 h-3 fill-current" aria-hidden="true" />
-                          Popular
-                        </span>
-                      </div>
-                    )}
-
-                    <div
-                      className={`relative h-full rounded-2xl ${
-                        p.popular
-                          ? "bg-gradient-to-b from-brand/20 to-dark-lighter border-2 border-brand/30"
-                          : "glass-card"
-                      } p-4 sm:p-6 flex flex-col`}
-                    >
-                      {/* Credit Value */}
-                      <div className="text-center mb-4 sm:mb-6">
-                        <p className="text-xs text-navy-500 font-semibold uppercase tracking-wider mb-1">{p.label}</p>
-                        <p className="text-xs sm:text-sm text-navy-400 mb-1">
-                          Valor do Crédito
-                        </p>
-                        <p className="text-xl sm:text-2xl lg:text-3xl font-bold gradient-text">
-                          R$ {formatBRL(p.credito)}
-                        </p>
-                      </div>
-
-                      {/* Details */}
-                      <div className="space-y-3 sm:space-y-4 flex-grow">
-                        <div className="flex justify-between items-center py-2 sm:py-3 border-b border-white/5">
-                          <span className="text-navy-400 text-xs sm:text-sm">Prazo</span>
-                          <span className="text-white font-medium text-sm sm:text-base">
-                            {PRAZO} meses
-                          </span>
-                        </div>
-
-                        <div className="flex justify-between items-center py-2 sm:py-3 border-b border-white/5">
-                          <span className="text-navy-400 text-xs sm:text-sm">Contribuição</span>
-                          <span className="text-brand font-bold text-sm sm:text-base">
-                            R$ {formatBRL(contribuicao)}
-                          </span>
-                        </div>
-
-                        <div className="flex justify-between items-center py-2 sm:py-3">
-                          <span className="text-navy-400 text-xs sm:text-sm">
-                            Taxa mensal
-                          </span>
-                          <span className="text-navy-300 text-xs sm:text-sm">
-                            {(p.taxa * 100).toFixed(3)}%
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* CTA */}
-                      <Link
-                        href="/#simulador"
-                        className={`mt-4 sm:mt-6 w-full py-2.5 sm:py-3 rounded-xl font-semibold text-center transition-all flex items-center justify-center gap-2 text-sm sm:text-base ${
-                          p.popular
-                            ? "btn-primary"
-                            : "border border-brand/30 text-brand hover:bg-brand/10"
-                        }`}
+          <div className="overflow-x-auto scrollbar-hide">
+            <table className="w-full min-w-[640px] text-left">
+              <thead>
+                <tr className="border-b border-white/10">
+                  <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400">Administradora</th>
+                  <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400">Crédito</th>
+                  <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400 text-center">Parcelas Pagas</th>
+                  <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400">Parcela</th>
+                  <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400 text-right">Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cartasContempladas.map((c, i) => (
+                  <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                    <td className="py-4 px-4">
+                      <span className={`${adminColors[c.administradora] ?? "bg-gray-600"} text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full`}>
+                        {c.administradora}
+                      </span>
+                    </td>
+                    <td className="py-4 px-4 text-brand font-bold text-sm sm:text-base">{c.credito}</td>
+                    <td className="py-4 px-4 text-white text-sm text-center">{c.parcelasPagas}</td>
+                    <td className="py-4 px-4 text-white font-medium text-sm sm:text-base">{c.parcela}</td>
+                    <td className="py-4 px-4 text-right">
+                      <a
+                        href={`https://wa.me/555197147766?text=${encodeURIComponent(`Olá! Tenho interesse na carta contemplada de ${c.credito} (${c.administradora}).`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand/10 text-brand text-xs sm:text-sm font-semibold hover:bg-brand/20 transition-colors"
                       >
-                        Simular
-                        <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                      </Link>
-                    </div>
-                  </div>
-                </AnimatedSection>
-              );
-            })}
+                        Negociar
+                        <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
-          <AnimatedSection delay={0.5}>
-            <p className="mt-12 text-center text-sm text-navy-400">
-              * Valores estimados. O consórcio possui reajuste anual conforme o índice do grupo. Consulte um especialista para simulação personalizada.
+          <AnimatedSection delay={0.3}>
+            <p className="mt-8 text-center text-sm text-navy-400">
+              * Valores sujeitos a alteração. Entre em contato para confirmar disponibilidade.
             </p>
           </AnimatedSection>
         </div>
@@ -165,8 +133,8 @@ export default function PlanosPage() {
               },
               {
                 icon: "�",
-                title: "Reajuste Anual",
-                description: "Reajuste anual previsto em contrato, sem cobranças ocultas",
+                title: "Correção Monetária",
+                description: "Correção monetária prevista em contrato, acompanhando a valorização do crédito ao longo do tempo",
               },
               {
                 icon: "🏆",
@@ -214,7 +182,7 @@ export default function PlanosPage() {
               </p>
 
               <a
-                href="https://wa.me/5551981179752"
+                href="https://wa.me/555197147766"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center gap-2"
