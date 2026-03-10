@@ -46,8 +46,8 @@ function HeroSection() {
             </h1>
 
             <p className="text-lg sm:text-xl text-navy-300 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 text-pretty">
-              Crédito inteligente e planejado para realizar seus sonhos.
-              Sem juros, sem burocracia, com estratégias personalizadas de contemplação.
+              Crédito inteligente para quem planeja com visão de futuro.
+              Sem juros, sem burocracia e com estratégias personalizadas para acelerar sua contemplação.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -99,13 +99,13 @@ function HeroSection() {
 // ============================================
 
 const adminLogos = [
-  { src: "/logos/canopus.png",    alt: "Consórcio Canopus" },
-  { src: "/logos/itau.png",       alt: "Consórcio Itaú" },
-  { src: "/logos/embracon.png",   alt: "Consórcio Embracon" },
-  { src: "/logos/sponchiado.png", alt: "Sponchiado Consórcios" },
-  { src: "/logos/magalu.png",     alt: "Consórcio Magalu" },
-  { src: "/logos/santander.png",  alt: "Consórcio Santander" },
-  { src: "/logos/cnp.png",        alt: "CNP Consórcio" },
+  { src: "/logos/magalu.svg",     alt: "Consórcio Magalu" },
+  { src: "/logos/santander.svg",  alt: "Consórcio Santander" },
+  { src: "/logos/cnp.svg",        alt: "CNP Consórcio" },
+  { src: "/logos/canopus.svg",    alt: "Consórcio Canopus" },
+  { src: "/logos/itau.svg",       alt: "Consórcio Itaú" },
+  { src: "/logos/embracon.svg",   alt: "Consórcio Embracon" },
+  { src: "/logos/sponchiado.svg", alt: "Sponchiado Consórcios" },
 ];
 
 function WhoWeAreSection() {
@@ -123,21 +123,21 @@ function WhoWeAreSection() {
         {/* ── 1. Photo ── */}
         <div className="css-reveal flex flex-col items-center mb-12">
           <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-brand/20 blur-[60px] scale-110" aria-hidden="true" />
-            <div className="relative p-[3px] rounded-full bg-gradient-to-br from-brand via-accent-cyan to-brand/20">
-              <div className="w-48 h-48 sm:w-60 sm:h-60 rounded-full overflow-hidden">
+            <div className="absolute inset-0 rounded-3xl bg-brand/20 blur-[80px] scale-110" aria-hidden="true" />
+            <div className="relative p-[4px] rounded-3xl bg-gradient-to-br from-brand via-accent-cyan to-brand/20 shadow-2xl shadow-brand/30">
+              <div className="w-80 h-96 sm:w-96 sm:h-[28rem] lg:w-[26rem] lg:h-[32rem] rounded-3xl overflow-hidden">
                 <Image
                   src="/consultor.jpeg"
                   alt="Matheus Rocha — Consultor Patrimônio Programado"
-                  width={480}
-                  height={600}
+                  width={832}
+                  height={1024}
                   className="w-full h-full object-cover object-top"
                   priority
                 />
               </div>
             </div>
           </div>
-          <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark border border-brand/30 text-white text-sm font-semibold shadow-lg">
+          <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark border border-brand/30 text-white text-sm font-semibold shadow-lg">
             <Award className="w-4 h-4 text-brand" aria-hidden="true" />
             Consultor Certificado · Regulado pelo BC
           </div>
@@ -216,7 +216,7 @@ function WhoWeAreSection() {
                   alt={alt}
                   width={100}
                   height={60}
-                  className="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="w-full h-14 object-contain transition-all duration-300"
                 />
               </div>
             ))}
@@ -236,28 +236,28 @@ const benefits = [
   {
     icon: PiggyBank,
     title: "Sem Juros Abusivos",
-    description: "Diferente do financiamento, você paga apenas uma pequena taxa administrativa.",
+    description: "Ao contrário do financiamento, você paga apenas uma taxa administrativa reduzida. Mais economia, mais patrimônio.",
     color: "text-brand",
     bg: "bg-brand/10",
   },
   {
     icon: Target,
     title: "Contemplação Estratégica",
-    description: "Use lances para acelerar sua contemplação ou aguarde por sorteio mensal.",
+    description: "Utilize lances estratégicos para antecipar sua contemplação ou aguarde os sorteios mensais.",
     color: "text-accent-cyan",
     bg: "bg-accent-cyan/10",
   },
   {
     icon: Shield,
     title: "Segurança Total",
-    description: "Administradoras reguladas pelo Banco Central com garantia de entrega.",
+    description: "Opere com administradoras reguladas pelo Banco Central, com total garantia de entrega do crédito.",
     color: "text-accent-purple",
     bg: "bg-accent-purple/10",
   },
   {
     icon: Zap,
     title: "Poder de Compra à Vista",
-    description: "Ao ser contemplado, negocie como comprador à vista e ganhe descontos.",
+    description: "Ao ser contemplado, negocie como comprador à vista e conquiste descontos expressivos.",
     color: "text-brand-light",
     bg: "bg-brand-light/10",
   },
@@ -276,8 +276,8 @@ function BenefitsSection() {
             <span className="gradient-text">diferença</span>
           </h2>
           <p className="text-lg text-navy-300 max-w-2xl mx-auto text-pretty">
-            O consórcio é a forma mais inteligente de construir patrimônio.
-            Conheça os benefícios que só quem planeja consegue.
+            O consórcio é a forma mais inteligente de construir patrimônio de forma sólida e sustentável.
+            Descubra os benefícios exclusivos de quem planeja com estratégia.
           </p>
         </div>
 
@@ -315,21 +315,21 @@ const consortiumTypes = [
   {
     icon: Home,
     title: "Imobiliário",
-    description: "Casa própria, apartamento, terreno ou imóvel comercial. Realize o sonho da casa própria.",
-    values: "R$ 50 mil a R$ 500 mil",
+    description: "Conquiste a casa própria, apartamento, terreno ou imóvel comercial com crédito planejado e sem juros.",
+    values: "R$ 100 mil a R$ 500 mil",
     color: "from-brand to-brand-dark",
   },
   {
     icon: Car,
     title: "Veículos",
-    description: "Carro, moto ou caminhão. Renove sua frota com planejamento inteligente.",
-    values: "R$ 30 mil a R$ 300 mil",
+    description: "Carro, moto ou caminhão: renove sua frota com planejamento estratégico e sem pagar juros.",
+    values: "R$ 70 mil a R$ 1 milhão",
     color: "from-accent-blue to-accent-purple",
   },
   {
     icon: Wallet,
     title: "Serviços",
-    description: "Viagens, reformas, educação ou outros objetivos. Flexibilidade para seus planos.",
+    description: "Viagens, reformas, educação e muito mais. Flexibilidade total para realizar seus planos.",
     values: "R$ 15 mil a R$ 100 mil",
     color: "from-accent-cyan to-accent-blue",
   },
@@ -348,7 +348,7 @@ function ConsortiumTypesSection() {
             <span className="gradient-text">ideal</span>
           </h2>
           <p className="text-lg text-navy-300 max-w-2xl mx-auto">
-            Oferecemos diferentes modalidades para atender seus objetivos de vida.
+            Modalidades sob medida para cada objetivo — com condições exclusivas e crédito sem juros.
           </p>
         </div>
 
@@ -397,10 +397,10 @@ function ConsortiumTypesSection() {
 // ============================================
 
 const steps = [
-  { number: "01", title: "Escolha seu plano", description: "Selecione o valor da carta de crédito e o prazo que melhor se encaixa no seu orçamento." },
-  { number: "02", title: "Participe do grupo", description: "Entre em um grupo de consórcio e pague suas parcelas mensais normalmente." },
-  { number: "03", title: "Seja contemplado", description: "Por sorteio mensal ou através de lance, você recebe sua carta de crédito." },
-  { number: "04", title: "Realize seu sonho", description: "Use a carta para adquirir seu bem com poder de compra à vista." },
+  { number: "01", title: "Escolha seu plano", description: "Defina o valor da carta de crédito e o prazo ideal para o seu orçamento e objetivo." },
+  { number: "02", title: "Participe do grupo", description: "Integre um grupo de consórcio e mantenha suas contribuições mensais em dia." },
+  { number: "03", title: "Seja contemplado", description: "Receba sua carta de crédito por sorteio mensal ou através de lance estratégico." },
+  { number: "04", title: "Realize seu sonho", description: "Utilize a carta para adquirir seu bem com poder de negociação à vista." },
 ];
 
 function HowItWorksSection() {
@@ -417,7 +417,7 @@ function HowItWorksSection() {
             <span className="gradient-text">consórcio</span>
           </h2>
           <p className="text-lg text-navy-300 max-w-2xl mx-auto">
-            Um processo simples e transparente para você conquistar seus objetivos.
+            Um processo simples, transparente e seguro para você conquistar seus maiores objetivos.
           </p>
         </div>
 
@@ -495,11 +495,11 @@ function FinalCTASection() {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="css-reveal">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance">
-            Pronto para construir seu patrimônio?
+            Pronto para começar a construir seu patrimônio?
           </h2>
           <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Faça uma simulação gratuita agora e descubra como o consórcio pode
-            transformar seus sonhos em realidade.
+            Faça uma simulação gratuita agora e descubra como o consórcio
+            pode transformar seu planejamento em conquistas reais.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

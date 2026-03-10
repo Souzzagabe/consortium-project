@@ -13,14 +13,14 @@ const servicos = [
     id: "imobiliario",
     title: "Consórcio Imobiliário",
     description:
-      "O consórcio imobiliário é a forma mais inteligente de adquirir imóveis sem pagar juros. Seja para a casa dos sonhos, apartamento, terreno ou imóvel comercial, nosso consórcio oferece as melhores condições do mercado.",
+      "Adquirir um imóvel sem pagar juros é possível — e o consórcio imobiliário é o caminho mais inteligente para isso. Seja para conquistar a casa própria, um apartamento, terreno ou imóvel comercial, oferecemos condições sob medida para transformar seu planejamento em patrimônio real.",
     beneficios: [
       "Sem juros — pague apenas taxa administrativa",
-      "Cartas de crédito de R$ 50.000 a R$ 500.000",
+      "Cartas de crédito de R$ 100.000 a R$ 500.000",
       "Prazos flexíveis de 60 a 120 meses",
       "Possibilidade de usar FGTS para lance",
       "Poder de compra à vista ao ser contemplado",
-      "Parcelas que cabem no seu orçamento",
+      "Contribuições que se encaixam no seu planejamento",
     ],
     icon: Home,
     gradient: "from-emerald-500 to-emerald-600",
@@ -31,11 +31,11 @@ const servicos = [
     id: "veiculos",
     title: "Consórcio de Veículos",
     description:
-      "Planeje a compra do seu carro, moto ou caminhão sem surpresas. O consórcio de veículos oferece parcelas fixas e sem juros, com a flexibilidade para escolher o veículo que desejar ao ser contemplado.",
+      "Planeje a compra do seu carro, moto ou caminhão de forma estratégica e sem surpresas. Com o consórcio de veículos, você conta com crédito sem juros e total flexibilidade para escolher o veículo ideal ao ser contemplado.",
     beneficios: [
       "Carros, motos, caminhões e utilitários",
-      "Cartas de crédito de R$ 5.000 a R$ 300.000",
-      "Prazos de 12 a 84 meses",
+      "Cartas de crédito de R$ 70.000 a R$ 1.000.000",
+      "Prazos de 60 a 100 meses",
       "Sem entrada obrigatória",
       "Contemplação por sorteio ou lance",
       "Pode usar para veículos novos ou usados",
@@ -49,7 +49,7 @@ const servicos = [
     id: "empresarial",
     title: "Consórcio Empresarial",
     description:
-      "Expanda seu negócio com crédito inteligente. O consórcio empresarial é ideal para aquisição de equipamentos, reforma de espaço comercial, frota de veículos ou capital para investimento no crescimento da sua empresa.",
+      "Leve sua empresa ao próximo nível com crédito inteligente e sem juros. Ideal para aquisição de equipamentos, expansão do espaço comercial, renovação de frota ou investimento estratégico no crescimento do seu negócio.",
     beneficios: [
       "Equipamentos, máquinas e tecnologia",
       "Reforma e ampliação comercial",
@@ -72,7 +72,7 @@ export default function ServicosPage() {
         badge="Nossos Serviços"
         title="Soluções em Consórcio para"
         titleHighlight="Cada Objetivo"
-        description="Oferecemos diferentes modalidades de consórcio para que você realize seus sonhos de forma planejada e sem juros."
+        description="Conheça nossas modalidades de consórcio desenvolvidas para ajudá-lo a conquistar seus objetivos de forma planejada, segura e sem juros."
       />
 
       {/* Services Detail */}
@@ -159,7 +159,7 @@ export default function ServicosPage() {
 
                           <div className="flex items-center justify-center gap-2 text-sm text-navy-400">
                             <Sparkles className="w-4 h-4 text-brand" aria-hidden="true" />
-                            <span>Sem juros • Parcelas fixas</span>
+                            <span>Sem juros</span>
                           </div>
 
                           <div className="mt-8 pt-6 border-t border-white/5">
@@ -168,9 +168,9 @@ export default function ServicosPage() {
                             </p>
                             <p className="text-3xl font-bold gradient-text">
                               {s.id === "imobiliario"
-                                ? "R$ 50.000"
+                                ? "R$ 100.000"
                                 : s.id === "veiculos"
-                                ? "R$ 5.000"
+                                ? "R$ 70.000"
                                 : "R$ 30.000"}
                             </p>
                           </div>

@@ -10,17 +10,19 @@ import {
   CTASection,
 } from "@/components/ui/PremiumComponents";
 
-const TAXA_ADMIN = 0.18;
+const TAXA_IMOVEL = 0.424 / 100;
+const TAXA_VEICULO = 0.848 / 100;
+const PRAZO = 240;
 
 const planos = [
-  { credito: 30000, prazo: 36, popular: false },
-  { credito: 50000, prazo: 48, popular: false },
-  { credito: 80000, prazo: 60, popular: true },
-  { credito: 100000, prazo: 72, popular: false },
-  { credito: 150000, prazo: 84, popular: false },
-  { credito: 200000, prazo: 96, popular: true },
-  { credito: 300000, prazo: 108, popular: false },
-  { credito: 500000, prazo: 120, popular: false },
+  { credito: 100000,  taxa: TAXA_IMOVEL,  label: "Imóvel",  popular: false },
+  { credito: 200000,  taxa: TAXA_IMOVEL,  label: "Imóvel",  popular: false },
+  { credito: 300000,  taxa: TAXA_IMOVEL,  label: "Imóvel",  popular: true  },
+  { credito: 500000,  taxa: TAXA_IMOVEL,  label: "Imóvel",  popular: false },
+  { credito: 1000000, taxa: TAXA_IMOVEL,  label: "Imóvel",  popular: false },
+  { credito: 70000,   taxa: TAXA_VEICULO, label: "Veículo", popular: false },
+  { credito: 200000,  taxa: TAXA_VEICULO, label: "Veículo", popular: true  },
+  { credito: 500000,  taxa: TAXA_VEICULO, label: "Veículo", popular: false },
 ];
 
 function formatBRL(value: number): string {
@@ -50,15 +52,15 @@ export default function PlanosPage() {
             badge="Compare"
             title="Tabela de"
             titleHighlight="Planos"
-            description="Valores de crédito, prazos, parcelas estimadas e taxas administrativas de cada plano."
+            description="Valores de crédito, prazos e contribuições mensais estimadas para cada perfil de cliente."
           />
 
           {/* Cards Grid — 2 cols on mobile, 4 on desktop */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {planos.map((p, idx) => {
-              const parcela = (p.credito * (1 + TAXA_ADMIN)) / p.prazo;
+              const contribuicao = p.credito * p.taxa;
               return (
-                <AnimatedSection key={p.credito} delay={idx * 0.05}>
+                <AnimatedSection key={`${p.credito}-${p.label}`} delay={idx * 0.05}>
                   <div
                     className={`relative h-full hover-lift ${p.popular ? "z-10" : ""}`}
                   >
@@ -81,6 +83,7 @@ export default function PlanosPage() {
                     >
                       {/* Credit Value */}
                       <div className="text-center mb-4 sm:mb-6">
+                        <p className="text-xs text-navy-500 font-semibold uppercase tracking-wider mb-1">{p.label}</p>
                         <p className="text-xs sm:text-sm text-navy-400 mb-1">
                           Valor do Crédito
                         </p>
@@ -94,23 +97,23 @@ export default function PlanosPage() {
                         <div className="flex justify-between items-center py-2 sm:py-3 border-b border-white/5">
                           <span className="text-navy-400 text-xs sm:text-sm">Prazo</span>
                           <span className="text-white font-medium text-sm sm:text-base">
-                            {p.prazo} meses
+                            {PRAZO} meses
                           </span>
                         </div>
 
                         <div className="flex justify-between items-center py-2 sm:py-3 border-b border-white/5">
-                          <span className="text-navy-400 text-xs sm:text-sm">Parcela</span>
+                          <span className="text-navy-400 text-xs sm:text-sm">Contribuição</span>
                           <span className="text-brand font-bold text-sm sm:text-base">
-                            R$ {formatBRL(parcela)}
+                            R$ {formatBRL(contribuicao)}
                           </span>
                         </div>
 
                         <div className="flex justify-between items-center py-2 sm:py-3">
                           <span className="text-navy-400 text-xs sm:text-sm">
-                            Taxa Admin.
+                            Taxa mensal
                           </span>
                           <span className="text-navy-300 text-xs sm:text-sm">
-                            {(TAXA_ADMIN * 100).toFixed(0)}%
+                            {(p.taxa * 100).toFixed(3)}%
                           </span>
                         </div>
                       </div>
@@ -136,8 +139,7 @@ export default function PlanosPage() {
 
           <AnimatedSection delay={0.5}>
             <p className="mt-12 text-center text-sm text-navy-400">
-              * Valores simulados. A parcela final pode variar de acordo com a
-              administradora e condições do grupo.
+              * Valores estimados. O consórcio possui reajuste anual conforme o índice do grupo. Consulte um especialista para simulação personalizada.
             </p>
           </AnimatedSection>
         </div>
@@ -162,9 +164,9 @@ export default function PlanosPage() {
                 description: "Apenas taxa administrativa transparente",
               },
               {
-                icon: "📊",
-                title: "Parcelas Fixas",
-                description: "Planejamento financeiro sem surpresas",
+                icon: "�",
+                title: "Reajuste Anual",
+                description: "Reajuste anual previsto em contrato, sem cobranças ocultas",
               },
               {
                 icon: "🏆",

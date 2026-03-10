@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Serviços de Consórcio",
   description:
-    "Conheça os serviços do Patrimônio Programado: consórcio imobiliário, de veículos e empresarial. Sem juros, parcelas fixas e crédito de até R$ 500 mil.",
+    "Conheça os serviços do Patrimônio Programado: consórcio imobiliário, de veículos e empresarial. Sem juros e crédito de até R$ 5 milhões.",
   openGraph: {
     title: "Serviços de Consórcio | Patrimônio Programado",
     description:

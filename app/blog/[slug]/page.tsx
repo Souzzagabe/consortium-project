@@ -71,6 +71,10 @@ const articles: Record<string, ArticleData> = {
   },
 };
 
+export function generateStaticParams() {
+  return Object.keys(articles).map((slug) => ({ slug }));
+}
+
 export default async function BlogArticlePage({
   params,
 }: {

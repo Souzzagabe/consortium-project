@@ -21,7 +21,7 @@ const conceitos = [
   {
     title: "O que é Consórcio?",
     description:
-      "O consórcio é uma modalidade de compra coletiva onde um grupo de pessoas se reúne com o objetivo de adquirir bens ou serviços. Cada participante contribui com parcelas mensais e, todos os meses, um ou mais integrantes são contemplados com a carta de crédito, podendo realizar a compra desejada.",
+      "O consórcio é uma modalidade de crédito coletivo onde um grupo de pessoas se reúne com o objetivo de adquirir bens ou serviços. Cada participante contribui mensalmente e, todos os meses, um ou mais integrantes são contemplados com a carta de crédito, podendo realizar a compra desejada com poder de compra à vista.",
     icon: HelpCircle,
     iconBg: "bg-brand/10",
     iconColor: "text-brand",
@@ -63,7 +63,7 @@ const conceitos = [
 const timeline = [
   { step: "1", title: "Escolha seu plano", desc: "Defina o valor do crédito e o prazo ideal." },
   { step: "2", title: "Entre no grupo", desc: "Você é incluído em um grupo de consórcio." },
-  { step: "3", title: "Pague as parcelas", desc: "Contribua mensalmente com o fundo comum." },
+  { step: "3", title: "Faça suas contribuições", desc: "Contribua mensalmente com o fundo comum do grupo." },
   { step: "4", title: "Sorteio ou lance", desc: "Participe dos sorteios ou oferte um lance." },
   { step: "5", title: "Contemplação", desc: "Receba a carta de crédito integral." },
   { step: "6", title: "Realize seu sonho", desc: "Use a carta para comprar seu bem à vista." },
@@ -218,7 +218,7 @@ export default function ComoFuncionaPage() {
 
       <CTASection
         title="Pronto para Começar?"
-        description="Simule seu consórcio agora e descubra parcelas que cabem no seu bolso."
+        description="Simule seu consórcio agora e descubra a contribuição ideal para você."
         primaryCTA={{ text: "Simular Consórcio", href: "/#simulador" }}
       />
 
