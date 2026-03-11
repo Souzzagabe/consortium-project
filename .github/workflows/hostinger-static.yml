@@ -1,11 +1,11 @@
-name: Build & Deploy Static Site
+name: Build Check
 
 on:
   push:
     branches: ["main"]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -20,19 +20,5 @@ jobs:
 
       - run: npm ci
       - run: npm run build
-
-      - name: Publish out/ to deploy branch
-        run: |
-          rm -rf .deploy
-          mkdir .deploy
-          cp -R out/* .deploy/
-          touch .deploy/.nojekyll
-          cd .deploy
-          git init
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add .
-          git commit -m "Deploy $(date +'%Y-%m-%d %H:%M:%S')"
-          git branch -M deploy
-          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git push -f origin deploy
+      # Deploy é feito automaticamente pelo Vercel via integração com o GitHub.
+      # O site utiliza Next.js com API Routes, portanto requer hospedagem server-side (Vercel).

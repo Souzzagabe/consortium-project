@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import Link from "next/link";
-import { Home, Car, BarChart3, TrendingUp } from "lucide-react";
+import { useState, useMemo, FormEvent } from "react";
+import { Home, Car, BarChart3, TrendingUp, Send } from "lucide-react";
 
 function formatBRL(value: number): string {
   return value.toLocaleString("pt-BR", {
@@ -17,7 +16,9 @@ const TIPOS = {
   imovel: {
     label: "Imóvel",
     icon: Home,
-    taxa: 0.12,
+    taxa: 0.12,         // Taxa administrativa interna (real) — não exibir ao usuário
+    taxaDisplay: 0.12,  // Taxa exibida na simulação ao usuário
+    taxaCalculo: 0.404, // Fator de cálculo → R$ 404 por R$ 100.000
     min: 100000,
     max: 5000000,
     step: 50000,
@@ -29,6 +30,8 @@ const TIPOS = {
     label: "Veículo",
     icon: Car,
     taxa: 0.848,
+    taxaDisplay: 0.848,
+    taxaCalculo: 0.848,
     min: 70000,
     max: 1000000,
     step: 10000,
@@ -40,19 +43,72 @@ const TIPOS = {
 
 type TipoKey = keyof typeof TIPOS;
 
+const inputClass =
+  "w-full px-3 py-2.5 rounded-xl border border-dark-border bg-dark/60 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all text-white placeholder:text-navy-500 text-sm";
+
 export default function SimulatorCard() {
   const [tipo, setTipo] = useState<TipoKey>("imovel");
   const [valorDesejado, setValorDesejado] = useState(300000);
 
+  const [form, setForm] = useState({ nome: "", telefone: "", email: "", horario: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
   const config = TIPOS[tipo];
 
   const contribuicaoMensal = useMemo(() => {
-    return (valorDesejado * config.taxa) / 100;
-  }, [valorDesejado, config.taxa]);
+    return (valorDesejado * config.taxaCalculo) / 100;
+  }, [valorDesejado, config.taxaCalculo]);
 
   const handleTipoChange = (novoTipo: TipoKey) => {
     setTipo(novoTipo);
     setValorDesejado(TIPOS[novoTipo].defaultVal);
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    const tipoLabel = TIPOS[tipo].label;
+    const valorFmt = `R$ ${formatBRL(valorDesejado)}`;
+    const parcelaFmt = `R$ ${formatBRL(Math.round(contribuicaoMensal))}`;
+
+    // Tenta enviar por e-mail via API
+    try {
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: form.nome,
+          telefone: form.telefone,
+          email: form.email,
+          horarioLigacao: form.horario,
+          tipoConsorcio: tipoLabel,
+          valorConsorcio: valorFmt,
+          parcelaSimulada: parcelaFmt,
+        }),
+      });
+    } catch {
+      // API indisponível — WhatsApp garante o recebimento
+    }
+
+    // Envia mensagem completa via WhatsApp
+    const linhas = [
+      `Olá! Vim pelo site Matheus Multiplica e gostaria de uma proposta.\n`,
+      `👤 *Nome:* ${form.nome}`,
+      `📱 *Telefone:* ${form.telefone}`,
+      `📬 *E-mail:* ${form.email}`,
+      `🏷️ *Tipo de consórcio:* ${tipoLabel}`,
+      `💰 *Valor do consórcio:* ${valorFmt}`,
+      `📊 *Parcela simulada:* ${parcelaFmt}`,
+      form.horario ? `⏰ *Melhor horário:* ${form.horario}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    window.open(`https://wa.me/555197147766?text=${encodeURIComponent(linhas)}`, "_blank");
+
+    setStatus("success");
+    setForm({ nome: "", telefone: "", email: "", horario: "" });
   };
 
   return (
@@ -144,16 +200,83 @@ export default function SimulatorCard() {
             </div>
           </div>
           <p className="text-xs text-navy-500 mt-3">
-            Taxa mensal: {config.taxa}% · Sujeito a reajuste anual
+            Taxa administrativa: {config.taxaDisplay}% · Sujeito a reajuste anual
           </p>
         </div>
 
-        {/* CTA */}
-        <Link href="/planos#formulario" className="btn-primary w-full">
-          <span className="flex items-center justify-center gap-2">
-            Solicitar Proposta
-          </span>
-        </Link>
+        {/* ── Formulário embutido ── */}
+        <div className="border-t border-dark-border pt-6 mt-1">
+          <div className="flex items-center gap-2.5 mb-5">
+            <div className="w-8 h-8 rounded-xl bg-green-600/15 flex items-center justify-center" aria-hidden="true">
+              <Send className="w-4 h-4 text-green-400" />
+            </div>
+            <p className="text-sm font-semibold text-white">Solicitar proposta</p>
+          </div>
+
+          {status === "success" ? (
+            <div role="alert" className="p-5 bg-brand/10 text-brand rounded-2xl text-sm text-center font-medium">
+              Mensagem enviada! Aguarde nosso contato em breve.
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <input
+                  type="text"
+                  required
+                  placeholder="Nome completo"
+                  value={form.nome}
+                  onChange={(e) => setForm({ ...form, nome: e.target.value })}
+                  className={inputClass}
+                  aria-label="Nome completo"
+                />
+                <input
+                  type="tel"
+                  required
+                  placeholder="Telefone / WhatsApp"
+                  value={form.telefone}
+                  onChange={(e) => setForm({ ...form, telefone: e.target.value })}
+                  className={inputClass}
+                  aria-label="Telefone"
+                />
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <input
+                  type="email"
+                  required
+                  placeholder="E-mail"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className={inputClass}
+                  aria-label="E-mail"
+                />
+                <select
+                  value={form.horario}
+                  onChange={(e) => setForm({ ...form, horario: e.target.value })}
+                  className={inputClass}
+                  aria-label="Melhor horário para ligação"
+                >
+                  <option value="">Horário para ligação</option>
+                  <option value="08h às 10h">08h às 10h</option>
+                  <option value="10h às 12h">10h às 12h</option>
+                  <option value="12h às 14h">12h às 14h</option>
+                  <option value="14h às 16h">14h às 16h</option>
+                  <option value="16h às 18h">16h às 18h</option>
+                  <option value="18h às 20h">18h às 20h</option>
+                  <option value="Qualquer horário">Qualquer horário</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-green-600 hover:bg-green-700 disabled:opacity-60 text-white font-semibold text-sm transition-all duration-200 shadow-lg shadow-green-600/20 mt-1"
+              >
+                <Send className="w-4 h-4" aria-hidden="true" />
+                {status === "loading" ? "Enviando..." : "Enviar via WhatsApp"}
+              </button>
+            </form>
+          )}
+        </div>
 
         <p className="text-xs text-center text-navy-500 mt-4">
           *Simulação estimada. Valores sujeitos a reajuste anual conforme índice do grupo.
