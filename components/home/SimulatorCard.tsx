@@ -269,10 +269,6 @@ export default function SimulatorCard() {
             </form>
           )}
         </div>
-
-        <p className="text-xs text-center text-navy-500 mt-4">
-          *Simulação estimada. Valores sujeitos a reajuste anual conforme índice do grupo.
-        </p>
       </div>
     </div>
   );
