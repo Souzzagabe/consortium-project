@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import ScrollToFormButton from "@/components/ui/ScrollToFormButton";
 import {
   TrendingUp,
   Home,
@@ -51,12 +52,12 @@ function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link href="#simulador" className="btn-primary group">
+              <ScrollToFormButton className="btn-primary group">
                 <span className="flex items-center gap-2">
                   Simular Agora
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </span>
-              </Link>
+              </ScrollToFormButton>
               <Link href="#quem-sou-eu" className="btn-secondary">
                 Como Funciona
               </Link>
@@ -372,13 +373,10 @@ function ConsortiumTypesSection() {
                   <TrendingUp className="w-4 h-4 text-brand" aria-hidden="true" />
                   <span className="text-sm font-medium text-white">{type.values}</span>
                 </div>
-                <Link
-                  href="/#simulador"
-                  className="mt-auto flex items-center gap-2 text-brand font-medium group/cta"
-                >
+                <ScrollToFormButton className="mt-auto flex items-center gap-2 text-brand font-medium group/cta cursor-pointer">
                   <span>Simular agora</span>
                   <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-2 transition-transform" aria-hidden="true" />
-                </Link>
+                </ScrollToFormButton>
               </div>
             </div>
           ))}
@@ -497,13 +495,12 @@ function FinalCTASection() {
             pode transformar seu planejamento em conquistas reais.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="#simulador"
+            <ScrollToFormButton
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-dark font-bold rounded-full hover:bg-navy-100 transition-colors shadow-2xl"
             >
               Simular Gratuitamente
               <ArrowRight className="w-5 h-5" aria-hidden="true" />
-            </Link>
+            </ScrollToFormButton>
             <a
               href="https://wa.me/555197147766"
               target="_blank"
@@ -527,12 +524,12 @@ export default function PremiumHomePage() {
   return (
     <>
       <HeroSection />
+      <TestimonialsCarousel />
       <WhoWeAreSection />
       <BenefitsSection />
       <ConsortiumTypesSection />
       <StatsSection />
       <HowItWorksSection />
-      <TestimonialsCarousel />
       <FinalCTASection />
     </>
   );

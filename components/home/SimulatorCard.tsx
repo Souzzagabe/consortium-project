@@ -203,7 +203,7 @@ export default function SimulatorCard() {
         </div>
 
         {/* ── Formulário embutido ── */}
-        <div className="border-t border-dark-border pt-6 mt-1">
+        <div id="formulario" className="border-t border-dark-border pt-6 mt-1">
 
           {status === "success" ? (
             <div role="alert" className="p-5 bg-brand/10 text-brand rounded-2xl text-sm text-center font-medium">
