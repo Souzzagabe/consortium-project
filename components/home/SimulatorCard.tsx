@@ -18,7 +18,7 @@ const TIPOS = {
     icon: Home,
     taxa: 0.12,         // Taxa administrativa interna (real) — não exibir ao usuário
     taxaDisplay: 0.12,  // Taxa exibida na simulação ao usuário
-    taxaCalculo: 0.404, // Fator de cálculo → R$ 404 por R$ 100.000
+    taxaCalculo: 0.424, // Fator de cálculo → R$ 424 por R$ 100.000
     min: 100000,
     max: 5000000,
     step: 50000,
@@ -29,9 +29,9 @@ const TIPOS = {
   veiculo: {
     label: "Veículo",
     icon: Car,
-    taxa: 0.848,
-    taxaDisplay: 0.848,
-    taxaCalculo: 0.848,
+    taxa: 0.823,
+    taxaDisplay: 0.823,
+    taxaCalculo: 0.823,
     min: 70000,
     max: 1000000,
     step: 10000,
@@ -199,9 +199,7 @@ export default function SimulatorCard() {
               <TrendingUp className="w-7 h-7 text-brand" />
             </div>
           </div>
-          <p className="text-xs text-navy-500 mt-3">
-            Taxa administrativa: {config.taxaDisplay}% · Sujeito a reajuste anual
-          </p>
+
         </div>
 
         {/* ── Formulário embutido ── */}
