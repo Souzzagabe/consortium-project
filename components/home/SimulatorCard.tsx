@@ -206,12 +206,6 @@ export default function SimulatorCard() {
 
         {/* ── Formulário embutido ── */}
         <div className="border-t border-dark-border pt-6 mt-1">
-          <div className="flex items-center gap-2.5 mb-5">
-            <div className="w-8 h-8 rounded-xl bg-green-600/15 flex items-center justify-center" aria-hidden="true">
-              <Send className="w-4 h-4 text-green-400" />
-            </div>
-            <p className="text-sm font-semibold text-white">Solicitar proposta</p>
-          </div>
 
           {status === "success" ? (
             <div role="alert" className="p-5 bg-brand/10 text-brand rounded-2xl text-sm text-center font-medium">
