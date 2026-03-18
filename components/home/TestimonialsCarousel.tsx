@@ -5,12 +5,12 @@ import Image from "next/image";
 
 /* ── Opportunity data ───────────────────────────────────── */
 const opportunities = [
-  { type: "Imóvel",   credit: "R$ 700.000,00",    parcela: "R$ 2.968,00",  image: "/carroussel/casa.jpeg"        },
-  { type: "Imóvel",   credit: "R$ 1.000.000,00",  parcela: "R$ 4.240,00",  image: "/carroussel/casaluxo.jpeg"    },
-  { type: "Caminhão", credit: "R$ 840.000,00",    parcela: "R$ 6.913,20",  image: "/carroussel/camnha1.jpeg"     },
-  { type: "Trator",   credit: "R$ 210.000,00",    parcela: "R$ 1.728,30",  image: "/carroussel/trator.jpeg"      },
-  { type: "Imóvel",   credit: "R$ 500.000,00",    parcela: "R$ 2.120,00",  image: "/carroussel/casafamilia.jpeg" },
-  { type: "Veículo",  credit: "R$ 180.000,00",    parcela: "R$ 1.481,40",  image: "/carroussel/carro.jpeg"       },
+  { type: "Imóvel",   credit: "R$ 700.000,00",    parcela: "R$ 2.968,00",  image: "/carroussel/casa.png"        },
+  { type: "Imóvel",   credit: "R$ 1.000.000,00",  parcela: "R$ 4.240,00",  image: "/carroussel/casaluxo.png"    },
+  { type: "Caminhão", credit: "R$ 840.000,00",    parcela: "R$ 6.913,20",  image: "/carroussel/camnha1.png"     },
+  { type: "Trator",   credit: "R$ 210.000,00",    parcela: "R$ 1.728,30",  image: "/carroussel/trator.png"      },
+  { type: "Imóvel",   credit: "R$ 500.000,00",    parcela: "R$ 2.120,00",  image: "/carroussel/casafamilia.png" },
+  { type: "Veículo",  credit: "R$ 180.000,00",    parcela: "R$ 1.481,40",  image: "/carroussel/carro.png"       },
 ];
 
 const allCards = [...opportunities, ...opportunities];
