@@ -220,6 +220,7 @@ export default function SimulatorCard() {
                   onChange={(e) => setForm({ ...form, nome: e.target.value })}
                   className={inputClass}
                   aria-label="Nome completo"
+                  autoComplete="name"
                 />
                 <input
                   type="tel"
@@ -228,7 +229,8 @@ export default function SimulatorCard() {
                   value={form.telefone}
                   onChange={(e) => setForm({ ...form, telefone: e.target.value })}
                   className={inputClass}
-                  aria-label="Telefone"
+                  aria-label="Telefone ou WhatsApp"
+                  autoComplete="tel"
                 />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -240,6 +242,7 @@ export default function SimulatorCard() {
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className={inputClass}
                   aria-label="E-mail"
+                  autoComplete="email"
                 />
                 <select
                   value={form.horario}

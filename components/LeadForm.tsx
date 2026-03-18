@@ -126,6 +126,7 @@ export default function LeadForm() {
                   onChange={(e) => setForm({ ...form, nome: e.target.value })}
                   className={fieldClass}
                   placeholder="Seu nome completo"
+                  autoComplete="name"
                 />
               </div>
               <div>
@@ -140,6 +141,7 @@ export default function LeadForm() {
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className={fieldClass}
                   placeholder="seu@email.com"
+                  autoComplete="email"
                 />
               </div>
             </div>
@@ -158,6 +160,7 @@ export default function LeadForm() {
                   onChange={(e) => setForm({ ...form, telefone: e.target.value })}
                   className={fieldClass}
                   placeholder="(51) 99999-9999"
+                  autoComplete="tel"
                 />
               </div>
               <div>

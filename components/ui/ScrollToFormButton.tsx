@@ -13,7 +13,7 @@ export default function ScrollToFormButton({ children, className }: Props) {
   };
 
   return (
-    <button type="button" onClick={handleClick} className={className}>
+    <button type="button" onClick={handleClick} className={className} aria-label="Ir para o simulador de consórcio">
       {children}
     </button>
   );

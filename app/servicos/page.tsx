@@ -65,9 +65,32 @@ const servicos = [
   },
 ];
 
+const servicosJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: servicos.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: s.title,
+      description: s.description,
+      provider: {
+        "@type": "Organization",
+        name: "Matheus Multiplica",
+      },
+      areaServed: { "@type": "Country", name: "Brasil" },
+    },
+  })),
+};
+
 export default function ServicosPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicosJsonLd) }}
+      />
       <PageHero
         badge="Nossos Serviços"
         title="Soluções em Consórcio para"
@@ -100,9 +123,9 @@ export default function ServicosPage() {
                       <IconComponent className={`w-8 h-8 ${s.iconColor}`} aria-hidden="true" />
                     </div>
 
-                    <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 text-balance">
+                    <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 text-balance">
                       {s.title}
-                    </h2>
+                    </h3>
 
                     <p className="text-lg text-navy-300 leading-relaxed mb-8">
                       {s.description}

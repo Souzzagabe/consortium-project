@@ -125,11 +125,12 @@ function WhoWeAreSection() {
               <div className="w-80 h-96 sm:w-96 sm:h-[28rem] lg:w-[26rem] lg:h-[32rem] rounded-3xl overflow-hidden">
                 <Image
                   src="/consultor.jpeg"
-                  alt="Matheus Rocha — Consultor Patrimônio Programado"
+                  alt="Matheus Rocha — Consultor de Consórcio Patrimônio Programado em Porto Alegre"
                   width={832}
                   height={1024}
                   className="w-full h-full object-cover object-top"
                   priority
+                  sizes="(max-width: 640px) 320px, (max-width: 1024px) 384px, 416px"
                 />
               </div>
             </div>
@@ -213,6 +214,7 @@ function WhoWeAreSection() {
                   alt={alt}
                   width={100}
                   height={60}
+                  loading="lazy"
                   className="w-full h-14 object-contain transition-all duration-300"
                 />
               </div>
@@ -455,7 +457,7 @@ const stats = [
 
 function StatsSection() {
   return (
-    <section className="py-12 lg:py-24 bg-dark-card border-y border-dark-border">
+    <section className="py-12 lg:py-24 bg-dark-card border-y border-dark-border" aria-label="Números e resultados">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-3 gap-8 lg:gap-12">
           {stats.map((stat, index) => (
@@ -464,7 +466,7 @@ function StatsSection() {
               className="css-reveal text-center"
               style={{ transitionDelay: `${index * 0.1}s` }}
             >
-              <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand mb-2">
+              <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand mb-2" aria-label={`${stat.value} ${stat.label}`}>
                 {stat.value}
               </p>
               <p className="text-sm sm:text-base text-navy-400">{stat.label}</p>

@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Planos de Consórcio | Compare e Simule Online",
+  title: "Cartas Contempladas | Crédito Disponível para Compra Imediata",
   description:
-    "Compare planos de consórcio de R$ 70 mil a R$ 5 milhões. Sem juros, prazo de 240 meses e contribuições que cabem no seu orçamento. Simule seu plano no Patrimônio Programado.",
+    "Cartas de crédito contempladas prontas para uso: de R$ 270 mil a R$ 15 milhões. Consórcio sem juros das melhores administradoras: Bradesco, Embracon, Caixa e Itaú. Negocie agora.",
   openGraph: {
-    title: "Planos de Consórcio | Patrimônio Programado",
+    title: "Cartas Contempladas | Matheus Multiplica",
     description:
-      "Planos de consórcio de R$ 70 mil a R$ 5 milhões sem juros. Compare contribuições e encontre o plano ideal.",
+      "Cartas de crédito contempladas de R$ 270 mil a R$ 15 milhões sem juros. Bradesco, Embracon, Caixa e Itaú. Negocie direto com consultor.",
     type: "website",
     locale: "pt_BR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Planos de Consórcio | Patrimônio Programado",
+    title: "Cartas Contempladas | Matheus Multiplica",
     description:
-      "Planos de consórcio de R$ 70 mil a R$ 5 milhões sem juros. Simule online.",
+      "Cartas contempladas de R$ 270 mil a R$ 15 milhões sem juros. Negocie agora.",
   },
   alternates: { canonical: "/planos" },
 };

@@ -66,15 +66,16 @@ export default function PlanosPage() {
             description="Cartas já contempladas, prontas para utilização. Negocie diretamente com nosso time."
           />
 
-          <div className="overflow-x-auto scrollbar-hide">
-            <table className="w-full min-w-[640px] text-left">
+          <div className="overflow-x-auto scrollbar-hide" role="region" aria-label="Tabela de cartas contempladas" tabIndex={0}>
+            <table className="w-full min-w-[640px] text-left" aria-label="Cartas contempladas disponíveis">
+              <caption className="sr-only">Lista de cartas de crédito contempladas com valores, parcelas e administradoras</caption>
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400">Administradora</th>
-                  <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400">Crédito</th>
-                  <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400 text-center">Parcelas Pagas</th>
-                  <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400">Parcela</th>
-                  <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400 text-right">Ação</th>
+                  <th scope="col" className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400">Administradora</th>
+                  <th scope="col" className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400">Crédito</th>
+                  <th scope="col" className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400 text-center">Parcelas Pagas</th>
+                  <th scope="col" className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400">Parcela</th>
+                  <th scope="col" className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-navy-400 text-right">Ação</th>
                 </tr>
               </thead>
               <tbody>

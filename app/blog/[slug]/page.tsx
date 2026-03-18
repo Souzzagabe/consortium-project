@@ -133,8 +133,37 @@ export default async function BlogArticlePage({
     );
   }
 
+  const SITE_URL = "https://matheusmultiplica.com.br";
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    author: {
+      "@type": "Person",
+      name: "Matheus Rocha",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Matheus Multiplica",
+      url: SITE_URL,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+    },
+    datePublished: article.date,
+    dateModified: article.date,
+    mainEntityOfPage: `${SITE_URL}/blog/${slug}`,
+    articleSection: article.category,
+    inLanguage: "pt-BR",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden hero-gradient" aria-label="Cabeçalho do artigo">
         <div className="absolute inset-0 grid-pattern opacity-50" aria-hidden="true" />

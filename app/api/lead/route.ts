@@ -1,19 +1,31 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function sanitize(value: unknown): string {
+  if (typeof value !== "string") return "";
+  return escapeHtml(value.trim().slice(0, 500));
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const {
-      nome,
-      email,
-      telefone,
-      valorConsorcio,
-      parcelaSimulada,
-      tipoConsorcio,
-      horarioLigacao,
-    } = body;
+    const nome = sanitize(body.nome);
+    const email = sanitize(body.email);
+    const telefone = sanitize(body.telefone);
+    const valorConsorcio = sanitize(body.valorConsorcio);
+    const parcelaSimulada = sanitize(body.parcelaSimulada);
+    const tipoConsorcio = sanitize(body.tipoConsorcio);
+    const horarioLigacao = sanitize(body.horarioLigacao);
 
     // Validation
     if (!nome || !telefone || !valorConsorcio) {
@@ -67,8 +79,6 @@ export async function POST(request: Request) {
         </table>
       `,
     });
-
-    console.log("New lead:", { nome, email, telefone, valorConsorcio, parcelaSimulada, tipoConsorcio, horarioLigacao });
 
     return NextResponse.json(
       { message: "Lead recebido com sucesso!" },

@@ -5,12 +5,14 @@ export const dynamic = "force-static";
 const BASE_URL = "https://matheusmultiplica.com.br";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date().toISOString();
+
   const staticRoutes = [
-    { path: "/", priority: 1.0 },
-    { path: "/servicos", priority: 0.9 },
-    { path: "/planos", priority: 0.9 },
-    { path: "/como-funciona", priority: 0.8 },
-    { path: "/blog", priority: 0.7 },
+    { path: "/", priority: 1.0, changeFrequency: "weekly" as const },
+    { path: "/servicos", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/planos", priority: 0.9, changeFrequency: "weekly" as const },
+    { path: "/como-funciona", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/blog", priority: 0.7, changeFrequency: "weekly" as const },
   ];
 
   const blogSlugs = [
@@ -21,15 +23,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${BASE_URL}${route.path}`,
-    lastModified: new Date(),
-    changeFrequency: route.path === "/blog" ? "weekly" : "monthly",
+    lastModified: now,
+    changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));
 
   const blogEntries: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
     url: `${BASE_URL}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
+    lastModified: now,
+    changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
 

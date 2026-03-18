@@ -8,9 +8,15 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/api/", "/_next/"],
+      },
+      {
+        userAgent: "Googlebot",
+        allow: "/",
         disallow: ["/api/"],
       },
     ],
     sitemap: "https://matheusmultiplica.com.br/sitemap.xml",
+    host: "https://matheusmultiplica.com.br",
   };
 }

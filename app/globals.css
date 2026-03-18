@@ -520,6 +520,18 @@ input[type="range"]::-moz-range-thumb {
   contain-intrinsic-size: auto 600px;
 }
 
+/* GPU acceleration for animated elements */
+.glass-card,
+.btn-primary,
+.btn-secondary {
+  will-change: auto;
+}
+
+/* Optimized font rendering */
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
+}
+
 /* ========================================
    MOBILE PERFORMANCE OPTIMIZATIONS
    ======================================== */

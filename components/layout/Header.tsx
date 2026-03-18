@@ -67,28 +67,30 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-1" role="list">
+          <ul className="hidden lg:flex items-center gap-1" role="list">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive(link.href) ? "page" : undefined}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
-                  isActive(link.href)
-                    ? "text-brand"
-                    : "text-navy-300 hover:text-white"
-                }`}
-              >
-                {link.label}
-                <span
-                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-brand transition-all duration-300 ${
-                    isActive(link.href) ? "w-1/2" : "w-0"
+              <li key={link.href}>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
+                    isActive(link.href)
+                      ? "text-brand"
+                      : "text-navy-300 hover:text-white"
                   }`}
-                  aria-hidden="true"
-                />
-              </Link>
+                >
+                  {link.label}
+                  <span
+                    className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-brand transition-all duration-300 ${
+                      isActive(link.href) ? "w-1/2" : "w-0"
+                    }`}
+                    aria-hidden="true"
+                  />
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
 
           {/* CTA */}
           <div className="hidden lg:flex items-center">

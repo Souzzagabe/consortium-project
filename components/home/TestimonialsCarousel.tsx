@@ -87,10 +87,11 @@ export default function TestimonialsCarousel() {
                 <div className="relative w-[85%] h-[85%]">
                   <Image
                     src={o.image}
-                    alt={`Consórcio de ${o.type}`}
+                    alt={`Consórcio de ${o.type} — crédito de ${o.credit}`}
                     fill
                     className="object-contain drop-shadow-[0_4px_20px_rgba(0,191,111,0.15)]"
-                    sizes="320px"
+                    sizes="(max-width: 640px) 280px, 320px"
+                    loading="lazy"
                   />
                 </div>
               </div>

@@ -69,9 +69,26 @@ const timeline = [
   { step: "6", title: "Realize seu sonho", desc: "Use a carta para comprar seu bem à vista." },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: conceitos.map((c) => ({
+    "@type": "Question",
+    name: c.title,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: c.description,
+    },
+  })),
+};
+
 export default function ComoFuncionaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <PageHero
         badge="Entenda o Consórcio"
         title="Como Funciona o"
