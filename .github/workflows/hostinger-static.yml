@@ -1,24 +1,44 @@
-name: Build Check
+name: Deploy to Hostinger
 
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source (main)
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - run: npm ci
-      - run: npm run build
-      # Deploy é feito automaticamente pelo Vercel via integração com o GitHub.
-      # O site utiliza Next.js com API Routes, portanto requer hospedagem server-side (Vercel).
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Remove API routes (incompatível com export estático)
+        run: rm -rf app/api
+
+      - name: Build static export
+        run: npm run build
+        env:
+          NEXT_PUBLIC_LICENSE_EXPIRY: ${{ secrets.NEXT_PUBLIC_LICENSE_EXPIRY }}
+          NEXT_PUBLIC_LICENSE_DOMAIN: ${{ secrets.NEXT_PUBLIC_LICENSE_DOMAIN }}
+          NEXT_PUBLIC_LICENSE_HASH: ${{ secrets.NEXT_PUBLIC_LICENSE_HASH }}
+
+      - name: Deploy out/ para branch deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: deploy
+          force_orphan: true
+          commit_message: "deploy: build estático ${{ github.sha }}"

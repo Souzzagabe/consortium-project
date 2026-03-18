@@ -1,39 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Static export para hospedagem compartilhada (Hostinger)
+  // Para reativar API Routes (e-mail Resend), remova 'output' e faça deploy na Vercel.
+  output: "export",
+  trailingSlash: true,
   images: {
-    formats: ["image/avif", "image/webp"],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    // Otimização de imagem via servidor não funciona em export estático
+    unoptimized: true,
   },
   compress: true,
   poweredByHeader: false,
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "X-XSS-Protection", value: "1; mode=block" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          {
-            key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
-          },
-        ],
-      },
-      {
-        source: "/(.*)\\.(jpg|jpeg|png|svg|webp|avif|ico|woff2)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-    ];
-  },
 };
 
 export default nextConfig;
