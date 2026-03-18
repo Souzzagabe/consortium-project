@@ -1,0 +1,11 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+User-Agent: Googlebot
+Allow: /
+Disallow: /api/
+
+Host: https://matheusmultiplica.com.br
+Sitemap: https://matheusmultiplica.com.br/sitemap.xml
